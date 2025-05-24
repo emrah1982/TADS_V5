@@ -1,0 +1,65 @@
+system:
+  max_fps: 30
+  detection_interval: 0.1
+  save_detections: true
+  save_interval: 300
+models:
+  general:
+    enabled: true
+    model_path: models/general.pt
+    model_type: yolov8
+    display_name: Genel Tespit
+    description: Genel nesne tespiti modeli
+    icon: fas fa-eye
+    priority: 1
+    confidence_threshold: 0.5
+    classes:
+      '0':
+        name: person
+        display_name: İnsan
+        color:
+        - 255
+        - 0
+        - 0
+        enabled: true
+        alert: true
+  farm:
+    enabled: true
+    model_path: models/farm.pt
+    model_type: yolov8
+    display_name: Tarım Tespiti
+    description: Tarım hastalıkları tespiti modeli
+    icon: fas fa-leaf
+    priority: 2
+    confidence_threshold: 0.5
+    classes:
+      '0':
+        name: healthy
+        display_name: Sağlıklı
+        color:
+        - 0
+        - 255
+        - 0
+        enabled: true
+        alert: false
+      '1':
+        name: diseased
+        display_name: Hastalıklı
+        color:
+        - 255
+        - 0
+        - 0
+        enabled: true
+        alert: true
+visualization:
+  box_thickness: 2
+  text_size: 1.0
+  text_thickness: 2
+  show_labels: true
+  show_confidence: true
+  show_fps: true
+performance:
+  batch_size: 1
+  device: cuda
+  half_precision: true
+  num_threads: 4

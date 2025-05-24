@@ -1,0 +1,1825 @@
+2025-05-23 22:15:11,894 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:15:11,914 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:15:11,916 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:15:11,916 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:15:11,918 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:15:11,918 - main - ERROR - Baþlatma hatasý: __init__() missing 2 required positional arguments: 'farm_model_path' and 'general_model_path'
+2025-05-23 22:15:11,919 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:15:11,920 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:15:11,921 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:15:11,924 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:15:11,970 - watchfiles.main - INFO - 5 changes detected
+2025-05-23 22:15:12,527 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:12,888 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:13,255 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:13,671 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:14,086 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:14,454 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:14,867 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:15,281 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:15,699 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:16,117 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:16,484 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:16,891 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:17,310 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:17,738 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:18,169 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:18,680 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:19,074 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:19,448 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:19,805 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:20,163 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:20,535 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:20,890 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:21,336 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:21,807 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:22,179 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:22,539 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:22,906 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:23,278 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:23,701 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:24,104 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:24,514 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:24,942 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:25,304 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:25,707 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:26,128 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:26,545 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:26,914 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:27,273 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:27,639 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:28,050 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:28,468 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:28,872 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:29,295 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:29,714 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:30,130 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:30,503 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:30,974 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:31,348 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:31,762 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:32,166 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:32,583 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:32,995 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:33,366 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:33,730 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:34,093 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:34,454 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:34,811 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:35,169 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:35,531 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:35,901 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:36,266 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:36,669 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:37,086 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:37,502 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:37,907 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:38,322 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:38,741 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:39,109 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:39,518 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:39,894 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:40,259 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:40,622 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:40,992 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:41,349 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:41,710 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:42,066 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:42,484 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:42,860 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:43,227 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:43,581 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:43,945 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:44,309 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:44,665 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:45,025 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:45,380 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:45,790 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:46,208 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:46,626 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:46,999 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:47,416 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:47,833 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:48,258 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:48,631 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:48,994 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:49,354 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:49,729 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:50,084 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:50,439 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:50,797 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:51,154 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:51,561 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:51,914 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:52,271 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:52,639 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:53,002 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:53,370 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:53,779 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:54,197 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:54,618 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:55,033 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:55,439 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:55,805 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:56,264 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:56,678 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:57,034 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:57,441 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:57,847 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:58,252 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:58,658 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:59,066 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:59,469 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:15:59,886 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:00,304 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:00,709 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:01,116 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:01,490 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:01,905 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:02,337 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:16:02,706 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:14,253 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:18:14,264 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:18:14,264 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:18:14,265 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:18:14,265 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:18:14,271 - main - ERROR - Baþlatma hatasý: __init__() missing 2 required positional arguments: 'farm_model_path' and 'general_model_path'
+2025-05-23 22:18:14,273 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:18:14,273 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:18:14,274 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:18:14,275 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:18:14,782 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:15,136 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:15,492 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:15,900 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:16,319 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:16,720 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:17,126 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:17,538 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:17,946 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:18,362 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:18,779 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:19,184 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:19,588 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:19,992 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:20,399 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:20,815 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:21,218 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:21,621 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:22,025 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:22,428 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:22,784 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:23,196 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:23,600 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:24,006 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:24,410 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:24,815 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:25,224 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:25,580 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:25,990 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:26,393 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:26,799 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:27,209 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:27,623 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:28,032 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:28,447 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:28,851 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:29,269 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:29,624 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:18:30,036 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:15,381 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:21:15,394 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:21:15,394 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:21:15,396 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:21:15,396 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:21:15,397 - main - ERROR - Baþlatma hatasý: __init__() missing 2 required positional arguments: 'farm_model_path' and 'general_model_path'
+2025-05-23 22:21:15,397 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:21:15,399 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:21:15,400 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:21:15,401 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:21:15,989 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:16,360 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:16,775 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:17,183 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:17,585 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:17,987 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:18,393 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:18,797 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:19,204 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:19,609 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:20,076 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:20,438 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:20,847 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:21,264 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:21,684 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:22,051 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:22,455 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:22,908 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:23,269 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:23,676 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:24,093 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:24,496 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:24,964 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:25,380 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:25,833 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:26,204 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:26,574 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:26,930 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:27,317 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:27,677 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:28,044 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:28,411 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:28,769 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:29,125 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:29,485 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:29,842 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:30,197 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:30,565 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:30,931 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:31,288 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:31,645 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:32,001 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:32,359 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:32,715 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:33,089 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:33,443 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:33,811 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:34,220 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:34,606 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:35,026 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:35,423 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:35,833 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:36,236 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:36,643 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:37,060 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:37,467 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:37,874 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:38,278 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:38,695 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:39,101 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:39,507 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:39,899 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:40,423 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:40,844 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:41,223 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:41,589 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:41,967 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:42,324 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:42,745 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:43,111 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:43,478 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:43,836 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:44,192 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:44,554 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:44,920 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:45,277 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:45,669 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:46,024 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:46,381 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:46,754 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:47,135 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:47,541 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:47,944 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:48,359 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:48,772 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:49,138 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:49,500 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:49,872 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:50,225 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:50,583 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:50,941 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:51,338 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:51,700 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:52,058 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:52,413 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:52,772 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:53,138 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:53,497 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:53,854 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:54,214 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:54,587 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:54,950 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:55,370 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:55,737 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:56,090 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:56,455 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:56,821 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:57,184 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:57,547 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:57,959 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:58,376 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:58,828 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:59,219 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:21:59,587 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:00,035 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:00,447 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:00,846 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:01,272 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:01,688 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:02,063 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:02,417 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:02,774 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:03,169 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:03,535 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:03,900 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:04,269 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:04,642 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:05,016 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:05,428 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:05,800 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:06,214 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:06,620 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:06,990 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:07,396 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:07,802 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:08,217 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:08,641 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:09,054 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:09,462 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:09,864 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:10,267 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:10,733 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:11,091 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:11,495 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:11,898 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:12,301 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:12,697 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:13,108 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:13,515 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:13,921 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:14,280 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:14,726 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:15,122 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:15,475 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:15,843 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:16,199 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:16,610 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:17,013 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:17,380 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:17,736 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:18,092 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:18,498 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:18,924 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:19,289 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:19,697 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:20,114 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:20,517 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:20,924 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:21,339 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:21,756 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:22,125 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:22,544 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:22,961 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:23,331 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:23,738 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:24,097 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:24,470 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:24,826 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:25,201 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:25,609 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:26,012 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:26,380 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:26,741 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:27,102 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:27,466 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:27,822 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:28,234 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:28,638 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:29,161 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:29,527 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:29,885 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:30,258 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:30,628 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:30,987 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:31,356 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:31,716 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:32,074 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:32,458 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:32,852 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:33,213 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:33,571 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:22:34,042 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:34,129 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:34,488 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:34,844 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:35,253 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:35,660 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:36,024 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:36,381 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:36,789 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:37,205 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:37,574 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:37,985 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:38,394 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:38,762 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:39,167 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:39,571 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:39,974 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:40,378 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:40,787 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:41,205 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:41,575 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:41,983 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:42,437 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:42,801 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:43,212 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:43,619 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:44,034 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:44,437 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:44,841 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:45,245 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:45,600 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:45,969 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:46,328 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:46,691 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:47,060 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:47,416 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:47,776 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:48,183 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:48,552 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:48,977 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:49,390 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:49,768 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:50,180 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:50,597 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:51,004 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:51,358 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:51,770 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:52,174 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:52,589 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:52,992 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:53,395 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:53,804 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:54,209 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:54,566 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:54,974 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:55,392 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:55,797 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:56,215 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:56,567 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:56,925 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:57,283 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:57,642 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:57,998 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:58,358 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:58,715 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:59,124 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:59,529 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:23:59,932 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:00,425 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:00,835 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:01,261 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:01,672 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:02,079 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:02,502 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:02,928 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:03,470 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:04,324 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:04,974 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:05,361 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:05,727 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:06,137 - watchfiles.main - INFO - 2 changes detected
+2025-05-23 22:24:06,568 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:06,956 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:07,360 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:07,737 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:08,105 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:08,511 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:08,879 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:09,251 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:09,605 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:09,963 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:10,367 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:10,735 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:11,144 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:11,547 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:11,968 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:12,387 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:12,806 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:13,253 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:13,639 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:14,044 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:14,448 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:14,813 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:15,168 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:15,546 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:15,908 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:16,265 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:16,622 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:16,981 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:17,350 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:17,756 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:18,166 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:18,531 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:18,890 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:19,246 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:19,698 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:20,116 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:20,475 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:20,832 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:21,241 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:21,609 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:22,018 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:22,436 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:22,805 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:23,212 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:23,617 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:24,031 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:24,450 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:24,856 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:25,273 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:25,643 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:26,050 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:26,539 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:26,926 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:27,294 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:27,653 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:28,009 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:28,368 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:28,726 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:29,082 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:29,489 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:29,920 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:30,375 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:30,809 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:31,192 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:31,596 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:32,015 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:32,419 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:32,813 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:33,237 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:33,656 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:34,082 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:34,490 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:34,894 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:35,297 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:35,665 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:36,079 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:36,491 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:36,911 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:37,327 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:37,730 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:38,097 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:38,502 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:38,922 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:39,339 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:39,709 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:40,170 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:40,586 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:40,954 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:41,375 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:41,793 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:42,196 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:42,605 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:43,027 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:43,386 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:43,793 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:44,172 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:44,586 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:45,006 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:45,378 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:45,744 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:24:46,099 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:20,950 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:21,401 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:21,762 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:21,790 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:22,151 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:22,168 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:22,559 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:22,571 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:22,943 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:22,974 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:23,361 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:23,400 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:23,856 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:23,929 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:24,265 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:24,346 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:24,625 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:24,762 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:24,991 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:25,128 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:25,254 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:25:25,272 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:25:25,274 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:25:25,278 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:25:25,279 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:25:25,280 - main - ERROR - Baþlatma hatasý: __init__() missing 2 required positional arguments: 'farm_model_path' and 'general_model_path'
+2025-05-23 22:25:25,280 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:25:25,280 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:25:25,281 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:25:25,281 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:25:25,345 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:25,485 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:25,751 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:25,843 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:26,202 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:26,206 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:26,571 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:26,607 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:26,968 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:26,992 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:27,357 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:27,374 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:25:27,376 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:27,383 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:25:27,383 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:25:27,384 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:25:27,385 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:25:27,389 - main - ERROR - Baþlatma hatasý: __init__() missing 2 required positional arguments: 'farm_model_path' and 'general_model_path'
+2025-05-23 22:25:27,390 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:25:27,391 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:25:27,391 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:25:27,392 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:25:27,712 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:27,880 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:28,072 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:28,344 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:28,430 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:28,711 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:28,789 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:29,121 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:29,148 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:29,473 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:29,505 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:29,829 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:29,860 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:30,190 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:30,216 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:30,564 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:30,589 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:30,929 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:30,944 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:31,291 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:31,301 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:31,659 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:32,064 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:32,477 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:32,495 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:32,955 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:33,010 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:33,349 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:33,505 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:33,708 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:33,913 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:34,063 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:34,322 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:34,424 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:34,742 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:34,787 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:35,147 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:35,549 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:35,956 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:36,375 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:36,779 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:37,187 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:37,593 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:38,010 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:38,414 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:38,817 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:39,222 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:39,627 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:40,034 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:40,447 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:40,854 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:41,259 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:41,665 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:42,033 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:42,437 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:42,839 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:43,249 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:43,667 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:44,070 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:44,477 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:44,834 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:45,237 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:45,643 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:46,046 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:46,455 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:46,871 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:47,289 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:47,693 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:48,099 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:48,502 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:48,869 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:49,276 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:49,693 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:50,111 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:50,528 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:50,933 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:51,337 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:51,767 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:52,205 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:52,666 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:53,022 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:53,430 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:53,834 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:54,239 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:54,646 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:55,063 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:55,466 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:55,870 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:56,286 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:56,641 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:57,049 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:57,453 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:57,869 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:58,275 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:58,729 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:59,104 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:59,519 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:25:59,937 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:00,345 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:00,711 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:01,119 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:01,530 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:01,935 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:02,353 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:02,761 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:03,169 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:03,574 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:03,943 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:04,346 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:04,753 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:05,156 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:05,574 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:05,979 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:06,386 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:06,743 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:07,151 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:07,558 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:08,014 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:08,379 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:08,786 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:09,193 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:09,595 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:10,001 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:10,406 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:10,824 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:11,228 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:11,644 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:12,009 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:12,419 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:12,824 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:13,231 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:13,639 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:14,042 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:14,445 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:14,847 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:15,254 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:15,658 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:16,016 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:16,424 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:16,828 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:17,233 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:17,637 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:18,045 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:18,449 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:18,853 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:19,257 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:19,664 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:20,069 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:20,476 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:20,878 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:21,283 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:21,689 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:22,042 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:22,399 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:22,757 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:23,114 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:23,471 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:23,832 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:24,189 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:24,550 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:24,959 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:25,363 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:26:25,769 - watchfiles.main - INFO - 1 change detected
+2025-05-23 22:27:04,747 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:27:04,754 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:27:04,755 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:27:04,755 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:27:04,756 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:27:04,756 - main - ERROR - Baþlatma hatasý: __init__() missing 2 required positional arguments: 'farm_model_path' and 'general_model_path'
+2025-05-23 22:27:04,756 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:27:04,757 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:27:04,757 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:27:04,758 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:27:36,366 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:27:36,378 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:27:36,379 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:27:36,380 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:27:36,380 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:27:36,391 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:27:36,395 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:27:36,396 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:27:36,397 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:27:36,397 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:27:36,398 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:27:36,643 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:27:36,643 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:27:36,786 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:27:36,787 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:27:36,788 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:27:36,790 - main - ERROR - Baþlatma hatasý: 'MultiModelYOLODetector' object has no attribute 'initialize'
+2025-05-23 22:27:36,791 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:31:07,474 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:31:07,482 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:31:07,482 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:31:07,483 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:31:07,483 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:31:07,500 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:31:07,506 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:31:07,516 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:31:07,532 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:31:07,534 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:31:07,535 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:31:07,727 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:31:07,727 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:31:07,927 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:31:07,928 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:31:07,929 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:31:07,931 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:31:07,931 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:32:44,669 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:32:44,671 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:32:55,154 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 22:32:55,155 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 22:32:55,155 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 22:32:55,157 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 22:32:55,158 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:32:55,697 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748028775697 (local_0)
+2025-05-23 22:32:55,708 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748028775697
+2025-05-23 22:33:03,035 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748028775697
+2025-05-23 22:33:03,040 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748028775697
+2025-05-23 22:33:34,297 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 22:33:34,298 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:33:34,630 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748028814630 (local_0)
+2025-05-23 22:33:34,633 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748028814630
+2025-05-23 22:35:53,084 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:35:53,095 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:35:53,098 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:35:53,100 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:35:53,101 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:35:53,121 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:35:53,121 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:35:53,122 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:35:53,122 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:35:53,125 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:35:53,125 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:35:53,360 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:35:53,360 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:35:53,774 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:35:53,775 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:35:53,776 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:35:53,779 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:35:53,780 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:36:16,843 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:36:16,860 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:36:31,966 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 22:36:31,967 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 22:36:31,967 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 22:36:31,968 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 22:36:31,968 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:36:31,972 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 22:36:31,973 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:36:33,160 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748028993160 (local_0)
+2025-05-23 22:36:33,174 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748028993160
+2025-05-23 22:36:33,260 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748028993260 (local_0)
+2025-05-23 22:36:33,473 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748028993260
+2025-05-23 22:36:37,435 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:37,438 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:38,207 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:38,212 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:38,994 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:38,998 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:39,728 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:39,731 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:40,760 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:40,764 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:41,654 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:41,658 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:42,413 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:42,415 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:43,712 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:43,715 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:46,903 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:46,913 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:48,473 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:48,477 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:49,293 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:49,295 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:50,438 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:50,446 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:51,982 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:51,988 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:52,892 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:52,894 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:53,721 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:53,724 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:54,294 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748028993260
+2025-05-23 22:36:54,297 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748028993260
+2025-05-23 22:36:54,610 - video_sources.video_manager - INFO - Kaynak durduruluyor: local_0
+2025-05-23 22:36:54,621 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:54,625 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-1'.
+2025-05-23 22:36:55,005 - video_sources.local_camera - INFO - Kamera yakalama durduruldu
+2025-05-23 22:36:55,005 - video_sources.local_camera - INFO - Local kamera temizleniyor
+2025-05-23 22:36:55,007 - video_sources.local_camera - INFO - Local kamera temizlendi
+2025-05-23 22:36:55,008 - video_sources.video_manager - INFO - Kaynak baþarýyla durduruldu: local_0
+2025-05-23 22:36:56,216 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:36:56,216 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:37:08,990 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 22:37:08,992 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 22:37:08,992 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 22:37:08,993 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 22:37:08,995 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 22:37:09,000 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:37:09,009 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 22:37:09,024 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:37:09,038 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:37:09,370 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748029029370 (local_0)
+2025-05-23 22:37:09,373 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748029029370
+2025-05-23 22:37:09,404 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748029029404 (local_0)
+2025-05-23 22:37:09,455 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748029029404
+2025-05-23 22:37:09,523 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748029029523 (local_0)
+2025-05-23 22:37:09,562 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748029029523
+2025-05-23 22:37:09,972 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:09,974 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:10,354 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:10,356 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:10,854 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:10,856 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:11,345 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:11,348 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:11,789 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:11,792 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:12,315 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:12,317 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:12,719 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:12,721 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:13,093 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:13,095 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:13,626 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:13,628 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:14,090 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:14,093 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:14,738 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:14,742 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:15,311 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:15,315 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:15,929 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:15,932 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:16,355 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:16,356 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:16,833 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:16,835 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:17,216 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:17,218 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:17,621 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:17,624 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:18,041 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:18,042 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:18,467 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:18,470 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:18,899 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:18,901 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:19,298 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:19,301 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:19,885 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:19,886 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:20,292 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:20,296 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:20,767 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:20,770 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:21,241 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:21,244 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:21,620 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:21,622 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:22,352 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:22,355 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:22,762 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:22,765 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:23,211 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:23,212 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:23,652 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:23,652 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:24,072 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:24,075 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:24,490 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:24,495 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:24,921 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:24,923 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:25,098 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748029029523
+2025-05-23 22:37:25,100 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748029029523
+2025-05-23 22:37:25,376 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:25,379 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-3'.
+2025-05-23 22:37:25,415 - video_sources.video_manager - INFO - Kaynak durduruluyor: local_0
+2025-05-23 22:37:25,732 - video_sources.local_camera - INFO - Kamera yakalama durduruldu
+2025-05-23 22:37:25,756 - video_sources.local_camera - INFO - Local kamera temizleniyor
+2025-05-23 22:37:25,830 - video_sources.local_camera - INFO - Local kamera temizlendi
+2025-05-23 22:37:25,880 - video_sources.video_manager - INFO - Kaynak baþarýyla durduruldu: local_0
+2025-05-23 22:37:27,721 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:37:27,722 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:37:39,961 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 22:37:39,962 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 22:37:39,962 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 22:37:39,963 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 22:37:39,966 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:37:40,308 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748029060308 (local_0)
+2025-05-23 22:37:40,312 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748029060308
+2025-05-23 22:37:40,639 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:40,642 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:41,039 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:41,041 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:41,433 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:41,437 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:41,949 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:41,951 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:42,566 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:42,571 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:43,074 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:43,077 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:43,492 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:43,494 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:43,883 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:43,886 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:44,327 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:44,330 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:44,704 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:44,706 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:45,094 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:45,095 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:45,458 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:45,460 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:45,828 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:45,831 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:46,210 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:46,213 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:46,640 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:46,642 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:47,083 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:47,087 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:47,458 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:47,459 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:47,920 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:47,922 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:48,305 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:48,308 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:48,781 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:48,783 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:49,189 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:49,192 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:49,560 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:49,562 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:49,930 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:49,931 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:50,320 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:50,321 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:50,669 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:50,671 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:51,144 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:51,145 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:51,508 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:51,510 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:51,988 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:51,990 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:52,376 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:52,378 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:52,844 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:52,845 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:53,371 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:53,375 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:53,809 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:53,811 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:54,259 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:54,260 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:54,627 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:54,630 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:55,022 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:55,024 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:55,474 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:55,475 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:55,983 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:55,987 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:56,567 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:56,570 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:57,076 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:57,078 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:57,458 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:57,461 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:58,215 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:58,220 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:58,920 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:58,922 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:59,439 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:37:59,441 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:00,117 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:00,120 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:00,607 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:00,609 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:01,070 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:01,073 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:01,675 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:01,677 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:02,060 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:02,061 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:02,650 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:02,652 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:03,233 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:03,236 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:03,754 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:03,756 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:04,239 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:04,242 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:05,671 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:05,674 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:08,472 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:08,721 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:10,656 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:10,660 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:12,718 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:12,721 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:13,464 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:13,467 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:14,188 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:14,190 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:14,793 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:14,797 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:15,418 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:15,421 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:15,995 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:15,997 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:16,604 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:16,606 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:17,221 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:17,224 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:17,894 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:17,896 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:18,492 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:18,494 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:19,138 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:19,143 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:19,737 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:19,741 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:20,288 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:20,291 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:20,774 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:20,777 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:21,244 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:21,246 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:21,735 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:21,737 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:22,177 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:22,179 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:22,621 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:22,625 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:23,073 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:23,076 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:23,531 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:23,533 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:24,430 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:24,433 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:25,102 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:25,108 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:25,614 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:25,617 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:26,299 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:26,303 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:26,750 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:26,753 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:27,405 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:27,408 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:27,945 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:27,948 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:28,627 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:28,668 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:29,332 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:29,335 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:29,918 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:29,925 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:30,497 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:30,499 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:31,021 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:31,023 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:31,459 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:31,461 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:31,895 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:31,898 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:32,415 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:32,420 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:33,225 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:33,228 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:33,829 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:33,831 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:34,394 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:34,397 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:34,884 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:34,890 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:35,361 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:35,363 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:35,816 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:35,820 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:36,339 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:36,343 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:36,878 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:36,885 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:37,341 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:37,343 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:37,802 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:37,804 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:38,281 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:38,287 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:38,664 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:38,666 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:39,023 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:39,025 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:39,582 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:39,590 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:40,068 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:40,071 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:40,544 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:40,546 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:41,057 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:41,059 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:41,562 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:41,567 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:42,089 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:42,092 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:43,742 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:43,744 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:46,350 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:46,353 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:47,288 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:47,291 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:48,021 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:48,026 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:48,645 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:48,648 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:49,026 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:49,028 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:49,525 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:49,527 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:50,039 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:50,041 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:50,443 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:50,447 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:50,833 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:50,835 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:51,244 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:51,248 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:51,703 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:51,705 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:52,316 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:52,318 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:52,708 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:52,711 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:53,091 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:53,092 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:53,453 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:53,456 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:53,824 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:53,827 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:54,179 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:54,181 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:54,672 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:54,674 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:55,039 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:55,041 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:55,413 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:55,415 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:55,866 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:55,869 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:56,399 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:56,402 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:57,076 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:57,081 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:57,523 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:57,541 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:57,903 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:57,906 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:58,272 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:58,273 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:58,643 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:58,646 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:59,102 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:59,105 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:59,614 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:38:59,616 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:00,122 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:00,124 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:00,553 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:00,555 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:00,975 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:00,979 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:01,556 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:01,560 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:01,981 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:01,983 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:02,354 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:02,357 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:02,762 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:02,764 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:03,500 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:03,502 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:04,055 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:04,056 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:04,477 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:04,480 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:04,891 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:04,893 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:05,225 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:05,227 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:05,550 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:05,552 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:05,916 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:05,918 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:06,297 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:06,300 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:06,648 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:06,650 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:06,991 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:06,993 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:07,332 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:07,335 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:07,734 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:07,736 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:08,174 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:08,176 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:08,565 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:08,568 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:08,913 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:08,915 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:09,260 - video_sources.video_manager - ERROR - Detection callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:39:09,263 - video_sources.video_manager - ERROR - Frame callback hatasý: There is no current event loop in thread 'Thread-5'.
+2025-05-23 22:40:06,723 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:40:06,733 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:40:06,734 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:40:06,735 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:40:06,736 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:40:06,750 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:40:06,750 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:40:06,751 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:40:06,751 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:40:06,752 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:40:06,752 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:40:07,077 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:40:07,078 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:40:07,250 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:40:07,250 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:40:07,251 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:40:07,254 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:40:07,255 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:47:04,339 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:47:04,344 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:47:15,947 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 22:47:15,949 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 22:47:15,949 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 22:47:15,950 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 22:47:15,950 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:47:16,302 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748029636302 (local_0)
+2025-05-23 22:47:16,306 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748029636302
+2025-05-23 22:50:17,458 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:50:17,474 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:50:17,475 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:50:17,476 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:50:17,485 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:50:17,511 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:50:17,517 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:50:17,522 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:50:17,524 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:50:17,525 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:50:17,526 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:50:17,760 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:50:17,761 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:50:18,238 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:50:18,239 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:50:18,240 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:50:18,242 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:50:18,244 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:52:15,929 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 22:53:01,434 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:53:01,434 - video_sources.video_manager - INFO - Video Manager temizleniyor...
+2025-05-23 22:53:01,435 - video_sources.video_manager - INFO - Video Manager temizlendi
+2025-05-23 22:53:01,435 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:53:01,436 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:53:01,437 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:53:13,987 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:53:14,011 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:53:14,013 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:53:14,015 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:53:14,016 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:53:14,096 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:53:14,160 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:53:14,205 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:53:14,210 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:53:14,212 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:53:14,229 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:53:14,477 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:53:14,478 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:53:14,687 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:53:14,688 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:53:14,690 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:53:14,692 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:53:14,692 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:53:14,697 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:53:14,698 - video_sources.video_manager - INFO - Video Manager temizleniyor...
+2025-05-23 22:53:14,699 - video_sources.video_manager - INFO - Video Manager temizlendi
+2025-05-23 22:53:14,701 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:53:14,703 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:53:14,706 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:53:24,616 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:53:24,634 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:53:24,638 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:53:24,639 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:53:24,640 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:53:24,664 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:53:24,667 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:53:24,671 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:53:24,675 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:53:24,677 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:53:24,677 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:53:24,845 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:53:24,845 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:53:24,985 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:53:24,985 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:53:24,987 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:53:24,990 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:53:24,991 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:53:37,733 - main - INFO - Uygulama kapatýlýyor...
+2025-05-23 22:53:37,783 - video_sources.video_manager - INFO - Video Manager temizleniyor...
+2025-05-23 22:53:37,819 - video_sources.video_manager - INFO - Video Manager temizlendi
+2025-05-23 22:53:37,855 - utils.websocket_manager - INFO - WebSocket Manager kapatýlýyor...
+2025-05-23 22:53:37,908 - utils.websocket_manager - INFO - WebSocket Manager baþarýyla kapatýldý
+2025-05-23 22:53:37,951 - main - INFO - Uygulama baþarýyla kapatýldý
+2025-05-23 22:53:52,084 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 22:53:52,113 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:53:52,114 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:53:52,115 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:53:52,116 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:53:52,142 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 22:53:52,150 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 22:53:52,154 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 22:53:52,166 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 22:53:52,170 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 22:53:52,178 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 22:53:52,468 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:53:52,476 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 22:53:52,743 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 22:53:52,744 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 22:53:52,745 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 22:53:52,747 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 22:53:52,747 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 22:54:38,856 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:54:38,859 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 22:54:54,659 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 22:54:54,698 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 22:54:54,698 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 22:54:54,714 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 22:54:54,723 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 22:54:54,875 - video_sources.local_camera - ERROR - Frame yakalanamadý
+2025-05-23 22:54:55,083 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748030095083 (local_0)
+2025-05-23 22:54:55,088 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748030095083
+2025-05-23 22:55:10,149 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748030095083
+2025-05-23 22:55:10,157 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748030095083
+2025-05-23 22:57:15,945 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 22:59:54,750 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 23:02:15,948 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 23:04:54,765 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 23:07:15,953 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 23:07:31,127 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748029636302
+2025-05-23 23:07:31,137 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748029636302
+2025-05-23 23:07:39,550 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 23:07:39,687 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 23:07:40,050 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748030860050 (local_0)
+2025-05-23 23:07:40,057 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748030860050
+2025-05-23 23:09:54,756 - video_sources.video_manager - INFO - Periyodik temizlik tamamlandý
+2025-05-23 23:14:49,264 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 23:14:49,265 - main - INFO - FastAPI uygulamasý baþlatýlýyor...
+2025-05-23 23:14:49,276 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 23:14:49,276 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 23:14:49,277 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 23:14:49,278 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 23:14:49,278 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 23:14:49,294 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 23:14:49,322 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 23:14:49,324 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 23:14:49,326 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 23:14:49,326 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 23:14:49,327 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 23:14:49,327 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 23:14:49,334 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 23:14:49,335 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 23:14:49,349 - utils.config_manager - INFO - Config doðrulamasý baþarýlý
+2025-05-23 23:14:49,351 - utils.config_manager - INFO - Model config'leri parse edildi: ['general', 'farm']
+2025-05-23 23:14:49,352 - utils.config_manager - INFO - System config parse edildi
+2025-05-23 23:14:49,356 - utils.config_manager - INFO - Config baþarýyla yüklendi: config\models_config.yaml
+2025-05-23 23:14:49,357 - models.multi_model_detector - INFO - Kullanýlan cihaz: cpu
+2025-05-23 23:14:49,358 - models.multi_model_detector - INFO - Genel YOLO modeli yükleniyor: models/yolov8n.pt
+2025-05-23 23:14:49,469 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 23:14:49,469 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 23:14:49,483 - models.multi_model_detector - INFO - Genel model yüklendi. Sýnýf sayýsý: 80
+2025-05-23 23:14:49,484 - models.multi_model_detector - INFO - Farm modeli yükleniyor: models/farm_best.pt
+2025-05-23 23:14:49,586 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 23:14:49,587 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 23:14:49,588 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 23:14:49,589 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 23:14:49,589 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 23:14:49,602 - models.multi_model_detector - INFO - Farm modeli yüklendi. Sýnýf sayýsý: 80
+2025-05-23 23:14:49,602 - models.multi_model_detector - INFO - Genel model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light']...
+2025-05-23 23:14:49,604 - models.multi_model_detector - INFO - Farm model sýnýflarý: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+2025-05-23 23:14:49,606 - main - INFO - YOLO detector baþarýyla yüklendi
+2025-05-23 23:14:49,606 - main - INFO - Tüm bileþenler baþarýyla baþlatýldý
+2025-05-23 23:14:59,599 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 23:14:59,601 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 23:15:10,177 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 23:15:10,178 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 23:15:10,178 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 23:15:10,179 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 23:15:10,180 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 23:15:10,236 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 23:15:10,250 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 23:15:10,512 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748031310512 (local_0)
+2025-05-23 23:15:10,514 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748031310512
+2025-05-23 23:15:10,581 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748031310581 (local_0)
+2025-05-23 23:15:10,619 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748031310581
+2025-05-23 23:15:15,699 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:16,463 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:17,267 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:18,055 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:18,832 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:19,637 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:20,194 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748031310581
+2025-05-23 23:15:20,200 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748031310581
+2025-05-23 23:15:20,508 - video_sources.video_manager - INFO - Kaynak durduruluyor: local_0
+2025-05-23 23:15:20,888 - video_sources.local_camera - INFO - Kamera yakalama durduruldu
+2025-05-23 23:15:20,889 - video_sources.local_camera - INFO - Local kamera temizleniyor
+2025-05-23 23:15:20,890 - video_sources.local_camera - INFO - Local kamera temizlendi
+2025-05-23 23:15:20,892 - video_sources.video_manager - INFO - Kaynak baþarýyla durduruldu: local_0
+2025-05-23 23:15:20,898 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:22,205 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 23:15:22,206 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 23:15:32,160 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 23:15:32,161 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 23:15:32,161 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 23:15:32,162 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 23:15:32,167 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 23:15:32,193 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748031310512
+2025-05-23 23:15:32,304 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748031310512
+2025-05-23 23:15:33,690 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:34,320 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:34,748 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:35,177 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:35,520 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:35,897 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:36,242 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:36,596 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:36,922 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:37,257 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:37,595 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:37,932 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:38,328 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:38,664 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:39,026 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:39,382 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:39,734 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:40,058 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:40,453 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:40,779 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:41,183 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:41,279 - video_sources.video_manager - INFO - Kaynak durduruluyor: local_0
+2025-05-23 23:15:41,869 - video_sources.local_camera - INFO - Kamera yakalama durduruldu
+2025-05-23 23:15:41,870 - video_sources.local_camera - INFO - Local kamera temizleniyor
+2025-05-23 23:15:41,872 - video_sources.local_camera - INFO - Local kamera temizlendi
+2025-05-23 23:15:41,873 - video_sources.video_manager - INFO - Kaynak baþarýyla durduruldu: local_0
+2025-05-23 23:15:41,876 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:42,035 - video_sources.video_manager - WARNING - Kaynak bulunamadý: local_0
+2025-05-23 23:15:42,036 - main - ERROR - Kaynak durdurma hatasý: 404: Kaynak bulunamadý
+2025-05-23 23:15:44,311 - video_sources.video_manager - INFO - Kamera baþlatýlýyor (ID: 0)
+2025-05-23 23:15:44,312 - video_sources.local_camera - INFO - Local kamera baþlatýlýyor (ID: 0)
+2025-05-23 23:15:53,409 - video_sources.local_camera - INFO - Kamera baþlatýldý: 640x480 @ 30.0 FPS
+2025-05-23 23:15:53,410 - video_sources.local_camera - INFO - Kamera yakalama döngüsü baþladý
+2025-05-23 23:15:53,411 - video_sources.local_camera - INFO - Kamera yakalama baþlatýldý
+2025-05-23 23:15:53,411 - video_sources.video_manager - INFO - Kamera 0 baþarýyla baþlatýldý
+2025-05-23 23:15:53,412 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 23:15:53,414 - video_sources.video_manager - WARNING - Kamera 0 zaten aktif
+2025-05-23 23:15:53,428 - utils.websocket_manager - INFO - local_0 kaynaðý baþlatýldý bildirimi gönderildi
+2025-05-23 23:15:53,735 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748031353735 (local_0)
+2025-05-23 23:15:53,743 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748031353735
+2025-05-23 23:15:53,766 - utils.websocket_manager - INFO - WebSocket baðlantýsý eklendi: local_0_1748031353766 (local_0)
+2025-05-23 23:15:53,771 - main - INFO - WebSocket baðlantýsý kuruldu: local_0_1748031353766
+2025-05-23 23:15:54,476 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:55,236 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:56,111 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:56,886 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:57,646 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:58,417 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:59,142 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:15:59,875 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:00,673 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:01,388 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:02,114 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:02,912 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:03,693 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:04,533 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:05,288 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:06,011 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:06,806 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:07,776 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:08,515 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:09,239 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:10,024 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:10,724 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:11,557 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:12,391 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:13,130 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:13,919 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:14,674 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:15,392 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:16,118 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:16,869 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:17,596 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:18,343 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:19,246 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:19,978 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:20,720 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:21,489 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:22,254 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:22,998 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:23,711 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:24,444 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:25,193 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:25,950 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:26,657 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:27,376 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:28,125 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:28,839 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:29,564 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:30,304 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:31,040 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:31,762 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:32,539 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:33,306 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:34,103 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:34,875 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:35,617 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:36,326 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:37,082 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:37,812 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:38,517 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:39,260 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:39,990 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:40,715 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:41,487 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:42,207 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:42,932 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:43,706 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:44,452 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:45,188 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:45,945 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:46,680 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:47,383 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:48,153 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:48,888 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:49,736 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:50,506 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:51,224 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:51,946 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:52,718 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:53,457 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:54,189 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:54,968 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:55,680 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:56,455 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:57,195 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:57,910 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:58,632 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:16:59,391 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:00,159 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:00,927 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:01,747 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:02,465 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:03,174 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:03,926 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:04,751 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:05,513 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:06,323 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:07,246 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:08,072 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:08,793 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:09,512 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:10,271 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:11,755 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:13,245 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:13,980 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:14,776 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:15,508 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:16,249 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:17,093 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:17,861 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:18,818 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:19,978 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:21,540 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:22,589 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:23,730 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:24,698 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:25,566 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:26,535 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:27,847 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:29,038 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:29,997 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:32,177 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:34,269 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:35,598 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:36,729 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:37,890 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:38,862 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:40,033 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:41,915 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:43,351 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:44,502 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:45,614 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:46,646 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:47,706 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:48,792 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:49,670 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:50,518 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:51,334 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:52,312 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:53,112 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:53,935 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:54,758 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:55,594 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:56,534 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:57,441 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:58,315 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:17:59,251 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748031353735
+2025-05-23 23:17:59,252 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748031353735
+2025-05-23 23:17:59,255 - main - INFO - WebSocket baðlantýsý koptu: local_0_1748031353766
+2025-05-23 23:17:59,256 - utils.websocket_manager - INFO - WebSocket baðlantýsý kaldýrýldý: local_0_1748031353766
+2025-05-23 23:17:59,422 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:00,307 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:00,952 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:01,642 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:02,456 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:03,304 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:03,899 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:04,654 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:05,510 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:05,966 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:06,408 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:07,000 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:07,541 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:07,986 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:08,389 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:08,786 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:09,166 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:09,562 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:10,023 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:10,441 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:10,842 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:11,396 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:12,421 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:12,850 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:13,257 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:13,640 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:14,029 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:14,722 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:15,189 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:15,601 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:16,011 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:16,449 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:16,988 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:17,404 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:17,837 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:18,285 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:18,694 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:19,113 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:19,511 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:19,918 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:20,320 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:20,733 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:21,142 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:23,441 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:24,085 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:24,710 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:25,234 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:25,718 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:26,169 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:26,632 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:27,214 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:27,739 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:28,207 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:28,877 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:29,234 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:29,574 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:29,923 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:30,253 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:30,957 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:31,949 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:32,985 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:33,609 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:33,960 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:34,304 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:34,635 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:35,511 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable
+2025-05-23 23:18:36,922 - video_sources.video_manager - ERROR - WebSocket gönderme hatasý: Object of type int32 is not JSON serializable

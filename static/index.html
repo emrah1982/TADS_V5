@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Model YOLO Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-controls">
+                <button class="header-btn" onclick="toggleConfigPanel()">
+                    ⚙️ Konfigürasyon
+                </button>
+                <button class="header-btn" onclick="exportDetectionData()">
+                    📄 Verileri Export Et
+                </button>
+                <button class="header-btn" onclick="toggleFullscreen()">
+                    🔲 Tam Ekran
+                </button>
+            </div>
+            <h1>🤖 Multi-Model YOLO Detection System</h1>
+            <p>YOLO11 (Genel) + Farm Model (Tarım) - Çoklu video kaynak yönetimi</p>
+        </div>
+
+        <div id="alerts"></div>
+
+        <!-- Model Status Panel -->
+        <div class="model-status-panel">
+            <h2>🔬 Model Durumu ve Kontrol</h2>
+            
+            <div class="model-controls">
+                <!-- General Model Card -->
+                <div class="model-card general" id="general-model-card">
+                    <div class="model-header">
+                        <div class="model-title">
+                            <span class="status-indicator" id="general-model-status"></span>
+                            🧠 YOLO11 (Genel Model)
+                        </div>
+                        <div class="model-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="general-model-toggle" checked onchange="toggleModel('general')">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="model-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="general-fps">0</div>
+                            <div class="stat-label">FPS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="general-detections">0</div>
+                            <div class="stat-label">Toplam Tespit</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="general-classes">80</div>
+                            <div class="stat-label">Sınıf Sayısı</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="general-time">0ms</div>
+                            <div class="stat-label">Ortalama Süre</div>
+                        </div>
+                    </div>
+                    <div class="model-description">
+                        İnsan, araç, hayvan, günlük nesneler vb.
+                    </div>
+                </div>
+
+                <!-- Farm Model Card -->
+                <div class="model-card farm" id="farm-model-card">
+                    <div class="model-header">
+                        <div class="model-title">
+                            <span class="status-indicator" id="farm-model-status"></span>
+                            🌱 Farm Model (Tarım)
+                        </div>
+                        <div class="model-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="farm-model-toggle" checked onchange="toggleModel('farm')">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="model-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="farm-fps">0</div>
+                            <div class="stat-label">FPS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="farm-detections">0</div>
+                            <div class="stat-label">Toplam Tespit</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="farm-classes">-</div>
+                            <div class="stat-label">Sınıf Sayısı</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="farm-time">0ms</div>
+                            <div class="stat-label">Ortalama Süre</div>
+                        </div>
+                    </div>
+                    <div class="model-description">
+                        Mineral eksikliği, hastalık, zararlı, olgunluk durumu vb.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confidence Threshold Control -->
+        <div class="confidence-control">
+            <h3>🎯 Güven Eşiği (Confidence Threshold)</h3>
+            <div class="confidence-container">
+                <label for="confidence-slider">Güven Eşiği: <span id="confidence-value">0.5</span></label>
+                <input type="range" id="confidence-slider" class="confidence-slider" 
+                       min="0.1" max="0.9" step="0.05" value="0.5" 
+                       onchange="updateConfidenceThreshold(this.value)">
+            </div>
+            <div class="confidence-description">
+                Düşük değerler daha fazla tespit (daha az kesin), yüksek değerler daha az tespit (daha kesin)
+            </div>
+        </div>
+
+        <!-- Performance Overview -->
+        <div class="performance-grid">
+            <div class="performance-card">
+                <div class="performance-value general" id="total-general-detections">0</div>
+                <div class="performance-label">Genel Model Tespitleri</div>
+            </div>
+            <div class="performance-card">
+                <div class="performance-value farm" id="total-farm-detections">0</div>
+                <div class="performance-label">Farm Model Tespitleri</div>
+            </div>
+            <div class="performance-card">
+                <div class="performance-value total" id="total-combined-detections">0</div>
+                <div class="performance-label">Toplam Tespit</div>
+            </div>
+            <div class="performance-card">
+                <div class="performance-value total" id="system-fps">0</div>
+                <div class="performance-label">Sistem FPS</div>
+            </div>
+        </div>
+
+        <!-- Video Sources Control -->
+        <div class="control-panel">
+            <h2>📹 Video Kaynakları Kontrolü</h2>
+            
+            <div class="source-controls">
+                <!-- Local Camera -->
+                <div class="source-card" id="local-camera-card">
+                    <h3>
+                        <span class="status-indicator" id="local-camera-status"></span>
+                        📷 Local Kamera
+                    </h3>
+                    <div class="source-details">
+                        <div class="camera-select">
+                            <label for="camera-id">Kamera Seç:</label>
+                            <select id="camera-id" class="form-select">
+                                <option value="0">Varsayılan Kamera</option>
+                                <option value="1">Kamera 1</option>
+                                <option value="2">Kamera 2</option>
+                            </select>
+                        </div>
+                        <div class="source-controls">
+                            <button class="btn btn-success" onclick="startLocalCamera()">Başlat</button>
+                            <button class="btn btn-danger" onclick="stopLocalCamera()">Durdur</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DJI Drone -->
+                <div class="source-card" id="dji-drone-card">
+                    <h3>
+                        <span class="status-indicator" id="dji-drone-status"></span>
+                        🚁 DJI Drone
+                    </h3>
+                    <div class="source-inputs">
+                        <input type="text" id="dji-connection" placeholder="Connection String" value="udp://:11111">
+                        <div class="source-buttons">
+                            <button class="btn btn-primary" onclick="startDJIDrone()">
+                                <span id="dji-drone-btn-text">Başlat</span>
+                            </button>
+                            <button class="btn btn-danger" onclick="stopDJIDrone()">Durdur</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parrot Anafi -->
+                <div class="source-card" id="parrot-anafi-card">
+                    <h3>
+                        <span class="status-indicator" id="parrot-anafi-status"></span>
+                        🦜 Parrot Anafi
+                    </h3>
+                    <div class="source-inputs">
+                        <input type="text" id="anafi-ip" placeholder="Drone IP" value="192.168.42.1">
+                        <div class="source-buttons">
+                            <button class="btn btn-primary" onclick="startParrotAnafi()">
+                                <span id="parrot-anafi-btn-text">Başlat</span>
+                            </button>
+                            <button class="btn btn-danger" onclick="stopParrotAnafi()">Durdur</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Streams -->
+        <div class="video-grid" id="video-grid">
+            <!-- Video streams will be added here dynamically -->
+        </div>
+
+        <!-- Detection Results -->
+        <div class="detections-grid">
+            <!-- General Model Detections -->
+            <div class="detection-panel general">
+                <h2>🧠 Genel Model Tespitleri</h2>
+                <div id="general-detections-list">
+                    <p class="no-detections">Henüz genel tespit bulunamadı...</p>
+                </div>
+            </div>
+
+            <!-- Farm Model Detections -->
+            <div class="detection-panel farm">
+                <h2>🌱 Farm Model Tespitleri</h2>
+                <div id="farm-detections-list">
+                    <p class="no-detections">Henüz farm tespiti bulunamadı...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Config Management Overlay -->
+    <div class="config-overlay" id="config-overlay" onclick="toggleConfigPanel()">
+        <div class="config-panel" onclick="event.stopPropagation()">
+            <div class="config-header">
+                <h2>⚙️ Konfigürasyon Yönetimi</h2>
+                <button class="btn btn-danger" onclick="toggleConfigPanel()">✕ Kapat</button>
+            </div>
+            
+            <div class="config-tabs">
+                <button class="config-tab active" onclick="showConfigTab('models')">🤖 Modeller</button>
+                <button class="config-tab" onclick="showConfigTab('classes')">🏷️ Sınıflar</button>
+                <button class="config-tab" onclick="showConfigTab('templates')">📋 Şablonlar</button>
+                <button class="config-tab" onclick="showConfigTab('import-export')">📁 İçe/Dışa Aktar</button>
+                <button class="config-tab" onclick="showConfigTab('statistics')">📊 İstatistikler</button>
+            </div>
+            
+            <!-- Models Tab -->
+            <div id="config-models" class="config-content active">
+                <h3>Model Konfigürasyonları</h3>
+                <div id="models-list">
+                    <!-- Models will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Classes Tab -->
+            <div id="config-classes" class="config-content">
+                <h3>Sınıf Yönetimi</h3>
+                <div class="class-management">
+                    <label for="model-select">Model Seçin:</label>
+                    <select id="model-select" onchange="loadModelClasses()">
+                        <option value="">Bir model seçin...</option>
+                    </select>
+                    <button class="btn btn-success" onclick="showAddClassModal()">➕ Sınıf Ekle</button>
+                </div>
+                <div id="classes-grid" class="class-grid">
+                    <!-- Classes will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Templates Tab -->
+            <div id="config-templates" class="config-content">
+                <h3>Hazır Şablonlar</h3>
+                <p class="template-description">Belirli senaryolar için önceden yapılandırılmış ayarlar</p>
+                <div id="templates-list">
+                    <!-- Templates will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Import/Export Tab -->
+            <div id="config-import-export" class="config-content">
+                <h3>Konfigürasyon İçe/Dışa Aktarma</h3>
+                
+                <div class="import-export-grid">
+                    <!-- Export Section -->
+                    <div class="export-section">
+                        <h4>📤 Dışa Aktar</h4>
+                        <div class="format-selection">
+                            <label>Format:</label>
+                            <select id="export-format">
+                                <option value="yaml">YAML</option>
+                                <option value="json">JSON</option>
+                            </select>
+                        </div>
+                        <div class="export-buttons">
+                            <button class="btn btn-primary" onclick="exportConfig()">Dışa Aktar</button>
+                            <button class="btn btn-success" onclick="backupConfig()">Yedek Al</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Import Section -->
+                    <div class="import-section">
+                        <h4>📥 İçe Aktar</h4>
+                        <div class="file-drop-zone" id="file-drop-zone" onclick="document.getElementById('config-file').click()">
+                            <div class="drop-icon">🗂️</div>
+                            <div>Config dosyasını buraya sürükleyin</div>
+                            <div>veya tıklayarak seçin</div>
+                        </div>
+                        <input type="file" id="config-file" accept=".yaml,.yml,.json" style="display: none;" onchange="handleConfigFile(this)">
+                        <div class="merge-option">
+                            <label>
+                                <input type="checkbox" id="merge-config"> Mevcut config ile birleştir
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistics Tab -->
+            <div id="config-statistics" class="config-content">
+                <h3>Konfigürasyon İstatistikleri</h3>
+                <div id="config-stats" class="config-stats-grid">
+                    <!-- Statistics will be loaded here -->
+                </div>
+                
+                <h4 class="model-details-title">Model Detayları</h4>
+                <div id="model-details">
+                    <!-- Model details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Class Modal -->
+    <div id="add-class-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Yeni Sınıf Ekle</h3>
+            <form id="add-class-form" onsubmit="addCustomClass(event)">
+                <div class="form-group">
+                    <label>Model:</label>
+                    <select id="add-class-model" required>
+                        <option value="">Model seçin...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Sınıf ID:</label>
+                    <input type="number" id="add-class-id" required>
+                </div>
+                <div class="form-group">
+                    <label>İngilizce Adı:</label>
+                    <input type="text" id="add-class-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Türkçe Adı:</label>
+                    <input type="text" id="add-class-display-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Renk:</label>
+                    <input type="color" id="add-class-color">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="add-class-enabled" checked> Aktif
+                    </label>
+                    <label>
+                        <input type="checkbox" id="add-class-alert"> Alert
+                    </label>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-danger" onclick="closeAddClassModal()">İptal</button>
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/static/js/websocket.js"></script>
+    <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>

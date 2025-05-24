@@ -1,0 +1,114 @@
+version: '3.8'
+
+services:
+  yolo-detection-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yolo-detection-system
+    ports:
+      - "8000:8000"
+    volumes:
+      # Model dosyaları
+      - ./models:/app/models
+      # Log dosyaları
+      - ./logs:/app/logs
+      # Video kayıtları (isteğe bağlı)
+      - ./recordings:/app/recordings
+      # Kamera erişimi için device mapping
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+      - MODEL_PATH=/app/models/yolo11l.pt
+      - MAX_WORKERS=4
+      - CUDA_VISIBLE_DEVICES=0
+    networks:
+      - yolo-network
+    privileged: true  # Kamera erişimi için
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis for caching (isteğe bağlı)
+  redis:
+    image: redis:7-alpine
+    container_name: yolo-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - yolo-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Nginx reverse proxy (isteğe bağlı)
+  nginx:
+    image: nginx:alpine
+    container_name: yolo-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    networks:
+      - yolo-network
+    depends_on:
+      - yolo-detection-api
+    restart: unless-stopped
+
+  # Grafana monitoring (isteğe bağlı)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: yolo-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - yolo-network
+    restart: unless-stopped
+
+  # Prometheus metrics (isteğe bağlı)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: yolo-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - yolo-network
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+
+networks:
+  yolo-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  redis-data:
+    driver: local
+  grafana-storage:
+    driver: local
+  prometheus-data:
+    driver: local

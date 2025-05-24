@@ -1,0 +1,97 @@
+2025-05-21 21:33:19,625 - bitki-hastalik-api - INFO - Bitki Hastalýklarý Tespit API v1.1.0 baþlatýlýyor...
+2025-05-21 21:33:19,626 - bitki-hastalik-api - INFO - Model dosyasý bulunamadý, indiriliyor: models\bitki-hastalik-best.pt
+2025-05-21 21:33:19,626 - bitki-hastalik-api - INFO - Model indirme denemesi 1/3
+2025-05-21 21:33:20,758 - bitki-hastalik-api - ERROR - Model indirme hatasý: [Errno 2] No such file or directory: 'bitki-hastalik-best.pt'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\main.py", line 224, in download_model_async
+    model = YOLO(config.MODEL_NAME)  # Bu modeli otomatik olarak indirecektir
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\models\yolo\model.py", line 53, in __init__
+    super().__init__(model=model, task=task, verbose=verbose)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\engine\model.py", line 151, in __init__
+    self._load(model, task=task)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\engine\model.py", line 295, in _load
+    self.model, self.ckpt = attempt_load_one_weight(weights)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\nn\tasks.py", line 1334, in attempt_load_one_weight
+    ckpt, weight = torch_safe_load(weight)  # load ckpt
+                   ~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\nn\tasks.py", line 1239, in torch_safe_load
+    ckpt = torch.load(file, map_location="cpu")
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\utils\patches.py", line 116, in torch_load
+    return _torch_load(*args, **kwargs)
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 1479, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 759, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 740, in __init__
+    super().__init__(open(name, mode))
+                     ~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'bitki-hastalik-best.pt'
+2025-05-21 21:33:20,772 - bitki-hastalik-api - WARNING - Model indirme baþarýsýz, 3 saniye sonra tekrar deneniyor...
+2025-05-21 21:33:23,786 - bitki-hastalik-api - INFO - Model indirme denemesi 2/3
+2025-05-21 21:33:23,992 - bitki-hastalik-api - ERROR - Model indirme hatasý: [Errno 2] No such file or directory: 'bitki-hastalik-best.pt'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\main.py", line 224, in download_model_async
+    model = YOLO(config.MODEL_NAME)  # Bu modeli otomatik olarak indirecektir
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\models\yolo\model.py", line 53, in __init__
+    super().__init__(model=model, task=task, verbose=verbose)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\engine\model.py", line 151, in __init__
+    self._load(model, task=task)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\engine\model.py", line 295, in _load
+    self.model, self.ckpt = attempt_load_one_weight(weights)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\nn\tasks.py", line 1334, in attempt_load_one_weight
+    ckpt, weight = torch_safe_load(weight)  # load ckpt
+                   ~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\nn\tasks.py", line 1239, in torch_safe_load
+    ckpt = torch.load(file, map_location="cpu")
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\utils\patches.py", line 116, in torch_load
+    return _torch_load(*args, **kwargs)
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 1479, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 759, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 740, in __init__
+    super().__init__(open(name, mode))
+                     ~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'bitki-hastalik-best.pt'
+2025-05-21 21:33:24,005 - bitki-hastalik-api - WARNING - Model indirme baþarýsýz, 3 saniye sonra tekrar deneniyor...
+2025-05-21 21:33:27,010 - bitki-hastalik-api - INFO - Model indirme denemesi 3/3
+2025-05-21 21:33:27,209 - bitki-hastalik-api - ERROR - Model indirme hatasý: [Errno 2] No such file or directory: 'bitki-hastalik-best.pt'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\main.py", line 224, in download_model_async
+    model = YOLO(config.MODEL_NAME)  # Bu modeli otomatik olarak indirecektir
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\models\yolo\model.py", line 53, in __init__
+    super().__init__(model=model, task=task, verbose=verbose)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\engine\model.py", line 151, in __init__
+    self._load(model, task=task)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\engine\model.py", line 295, in _load
+    self.model, self.ckpt = attempt_load_one_weight(weights)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\nn\tasks.py", line 1334, in attempt_load_one_weight
+    ckpt, weight = torch_safe_load(weight)  # load ckpt
+                   ~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\nn\tasks.py", line 1239, in torch_safe_load
+    ckpt = torch.load(file, map_location="cpu")
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\ultralytics\utils\patches.py", line 116, in torch_load
+    return _torch_load(*args, **kwargs)
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 1479, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 759, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\User\Desktop\TADS_V5\FastAPI\venv\Lib\site-packages\torch\serialization.py", line 740, in __init__
+    super().__init__(open(name, mode))
+                     ~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'bitki-hastalik-best.pt'
+2025-05-21 21:33:27,219 - bitki-hastalik-api - WARNING - Model indirme baþarýsýz, 3 saniye sonra tekrar deneniyor...
+2025-05-21 21:33:30,229 - bitki-hastalik-api - ERROR - Maksimum deneme sayýsýna ulaþýldý (3), model yüklenemedi
+2025-05-21 21:33:37,828 - bitki-hastalik-api - INFO - Bitki Hastalýklarý Tespit API kapatýlýyor...

@@ -6,7 +6,7 @@ system:
 models:
   general:
     enabled: true
-    model_path: models/general.pt
+    model_path: models/yolov8n.pt
     model_type: yolov8
     display_name: Genel Tespit
     description: Genel nesne tespiti modeli
@@ -16,41 +16,562 @@ models:
     classes:
       '0':
         name: person
-        display_name: İnsan
+        display_name: Insan
         color:
         - 255
         - 0
         - 0
         enabled: true
         alert: true
+      
+      '15':
+        name: dog
+        display_name: Köpek
+        color:
+        - 244
+        - 164
+        - 96
+        enabled: true
+        alert: true
+
+      '16':
+        name: horse
+        display_name: At
+        color:
+        - 160
+        - 82
+        - 45
+        enabled: true
+        alert: true
+
+      '18':
+        name: sheep
+        display_name: Koyun
+        color:
+        - 255
+        - 222
+        - 173
+        enabled: true
+        alert: true
+
+      '19':
+        name: cow
+        display_name: İnek
+        color:
+        - 139
+        - 69
+        - 19
+        enabled: true
+        alert: true
+      
+      
   farm:
     enabled: true
-    model_path: models/farm.pt
+    model_path: models/farm_best.pt
     model_type: yolov8
     display_name: Tarım Tespiti
-    description: Tarım hastalıkları tespiti modeli
+    description: Tarım hastalıkları ve zararlılar tespiti modeli
     icon: fas fa-leaf
+    priority: 2
+    confidence_threshold: 0.1
+    classes:
+      # Sağlıklı/Hastalıklı Durumu
+      '0':
+        name: healthy
+        display_name: Saglikli
+        color: [0, 255, 0]  # Yeşil
+        enabled: true
+        alert: false
+
+      # Zararlılar (17 sınıf)
+      '1':
+        name: aphids
+        display_name: Yaprak Biti
+        color: [255, 0, 0]  # Kırmızı
+        enabled: true
+        alert: true
+      '2':
+        name: whitefly
+        display_name: Beyaz Sinek
+        color: [255, 128, 0]  # Turuncu
+        enabled: true
+        alert: true
+      '3':
+        name: spider_mites
+        display_name: Kirmizi Orumcek
+        color: [255, 0, 128]  # Pembe
+        enabled: true
+        alert: true
+      '4':
+        name: thrips
+        display_name: Trips
+        color: [128, 0, 255]  # Mor
+        enabled: true
+        alert: true
+      '5':
+        name: leafminer
+        display_name: Yaprak Galeri Sinegi
+        color: [0, 128, 255]  # Mavi
+        enabled: true
+        alert: true
+      '6':
+        name: caterpillar
+        display_name: Tirtil
+        color: [255, 255, 0]  # Sarı
+        enabled: true
+        alert: true
+      '7':
+        name: cutworm
+        display_name: Kesici Kurt
+        color: [128, 128, 0]  # Koyu Sarı
+        enabled: true
+        alert: true
+      '8':
+        name: hornworm
+        display_name: Boynuzlu Kurt
+        color: [0, 128, 128]  # Turkuaz
+        enabled: true
+        alert: true
+      '9':
+        name: fruit_worm
+        display_name: Meyve Kurdu
+        color: [128, 0, 128]  # Mor
+        enabled: true
+        alert: true
+      '10':
+        name: stink_bug
+        display_name: Kokulu Böcek
+        color: [128, 64, 0]  # Kahverengi
+        enabled: true
+        alert: true
+      '11':
+        name: beetle
+        display_name: Böcek
+        color: [64, 128, 0]  # Yeşil-Kahve
+        enabled: true
+        alert: true
+      '12':
+        name: leafhopper
+        display_name: Yaprak Piresi
+        color: [0, 64, 128]  # Lacivert
+        enabled: true
+        alert: true
+      '13':
+        name: mealybug
+        display_name: Unlu Bit
+        color: [128, 0, 64]  # Bordo
+        enabled: true
+        alert: true
+      '14':
+        name: scale_insect
+        display_name: Kabuklu Bit
+        color: [64, 0, 128]  # Mor-Lacivert
+        enabled: true
+        alert: true
+      '15':
+        name: fruit_fly
+        display_name: Meyve Sineği
+        color: [128, 128, 64]  # Haki
+        enabled: true
+        alert: true
+      '16':
+        name: nematode
+        display_name: Nematod
+        color: [64, 128, 128]  # Gri-Turkuaz
+        enabled: true
+        alert: true
+      '17':
+        name: slug
+        display_name: Sümüklü Böcek
+        color: [128, 64, 128]  # Mor-Gri
+        enabled: true
+        alert: true
+
+      # Mineral Eksikliği (2 sınıf)
+      '18':
+        name: nitrogen_deficiency
+        display_name: Azot Eksikliği
+        color: [255, 255, 128]  # Açık Sarı
+        enabled: true
+        alert: true
+      '19':
+        name: phosphorus_deficiency
+        display_name: Fosfor Eksikliği
+        color: [255, 128, 128]  # Açık Kırmızı
+        enabled: true
+        alert: true
+
+      # Domatesin Olgunluk Durumu (3 sınıf)
+      '20':
+        name: unripe
+        display_name: Ham
+        color: [0, 255, 0]  # Yeşil
+        enabled: true
+        alert: false
+      '21':
+        name: semi_ripe
+        display_name: Yarı Olgun
+        color: [255, 255, 0]  # Sarı
+        enabled: true
+        alert: false
+      '22':
+        name: ripe
+        display_name: Olgun
+        color: [255, 0, 0]  # Kırmızı
+        enabled: true
+        alert: false
+
+      # Domates Hastalıkları (30 sınıf)
+      '23':
+        name: early_blight
+        display_name: Erken Yanıklık
+        color: [192, 0, 0]  # Koyu Kırmızı
+        enabled: true
+        alert: true
+      '24':
+        name: late_blight
+        display_name: Geç Yanıklık
+        color: [128, 0, 0]  # Bordo
+        enabled: true
+        alert: true
+      '25':
+        name: leaf_mold
+        display_name: Yaprak Küfü
+        color: [64, 0, 0]  # Çok Koyu Kırmızı
+        enabled: true
+        alert: true
+      '26':
+        name: septoria_leaf_spot
+        display_name: Septoria Yaprak Lekesi
+        color: [192, 192, 0]  # Koyu Sarı
+        enabled: true
+        alert: true
+      '27':
+        name: bacterial_spot
+        display_name: Bakteriyel Leke
+        color: [128, 128, 0]  # Hardal
+        enabled: true
+        alert: true
+      '28':
+        name: target_spot
+        display_name: Hedef Lekesi
+        color: [64, 64, 0]  # Çok Koyu Sarı
+        enabled: true
+        alert: true
+      '29':
+        name: spider_mite_damage
+        display_name: Kırmızı Örümcek Zararı
+        color: [192, 0, 192]  # Mor
+        enabled: true
+        alert: true
+      '30':
+        name: mosaic_virus
+        display_name: Mozaik Virüsü
+        color: [128, 0, 128]  # Koyu Mor
+        enabled: true
+        alert: true
+      '31':
+        name: yellow_leaf_curl
+        display_name: Sarı Yaprak Kıvırcıklığı
+        color: [64, 0, 64]  # Çok Koyu Mor
+        enabled: true
+        alert: true
+      '32':
+        name: powdery_mildew
+        display_name: Külleme
+        color: [192, 192, 192]  # Açık Gri
+        enabled: true
+        alert: true
+      '33':
+        name: gray_mold
+        display_name: Kurşuni Küf
+        color: [128, 128, 128]  # Gri
+        enabled: true
+        alert: true
+      '34':
+        name: bacterial_wilt
+        display_name: Bakteriyel Solgunluk
+        color: [64, 64, 64]  # Koyu Gri
+        enabled: true
+        alert: true
+      '35':
+        name: fusarium_wilt
+        display_name: Fusarium Solgunluğu
+        color: [192, 0, 96]  # Pembe-Kırmızı
+        enabled: true
+        alert: true
+      '36':
+        name: verticillium_wilt
+        display_name: Verticillium Solgunluğu
+        color: [128, 0, 64]  # Koyu Pembe
+        enabled: true
+        alert: true
+      '37':
+        name: bacterial_canker
+        display_name: Bakteriyel Kanser
+        color: [64, 0, 32]  # Çok Koyu Pembe
+        enabled: true
+        alert: true
+      '38':
+        name: anthracnose
+        display_name: Antraknoz
+        color: [192, 96, 0]  # Turuncu-Kahve
+        enabled: true
+        alert: true
+      '39':
+        name: fruit_rot
+        display_name: Meyve Çürüklüğü
+        color: [128, 64, 0]  # Kahverengi
+        enabled: true
+        alert: true
+      '40':
+        name: blossom_end_rot
+        display_name: Çiçek Burnu Çürüklüğü
+        color: [64, 32, 0]  # Koyu Kahve
+        enabled: true
+        alert: true
+      '41':
+        name: sunscald
+        display_name: Güneş Yanığı
+        color: [192, 96, 96]  # Somon
+        enabled: true
+        alert: true
+      '42':
+        name: catface
+        display_name: Kedi Yüzü
+        color: [128, 64, 64]  # Kiremit
+        enabled: true
+        alert: true
+      '43':
+        name: growth_crack
+        display_name: Büyüme Çatlağı
+        color: [64, 32, 32]  # Koyu Kiremit
+        enabled: true
+        alert: true
+      '44':
+        name: bacterial_speck
+        display_name: Bakteriyel Benek
+        color: [192, 96, 192]  # Lila
+        enabled: true
+        alert: true
+      '45':
+        name: tomato_spotted_wilt
+        display_name: Domates Lekeli Solgunluk
+        color: [128, 64, 128]  # Koyu Lila
+        enabled: true
+        alert: true
+      '46':
+        name: tobacco_mosaic
+        display_name: Tütün Mozaik Virüsü
+        color: [64, 32, 64]  # Çok Koyu Lila
+        enabled: true
+        alert: true
+      '47':
+        name: tomato_yellow_leaf_curl
+        display_name: Domates Sarı Yaprak Kıvırcıklığı
+        color: [192, 192, 96]  # Açık Haki
+        enabled: true
+        alert: true
+      '48':
+        name: tomato_chlorotic_spot
+        display_name: Domates Klorotik Benek
+        color: [128, 128, 64]  # Haki
+        enabled: true
+        alert: true
+      '49':
+        name: tomato_bushy_stunt
+        display_name: Domates Bodur Gelişme
+        color: [64, 64, 32]  # Koyu Haki
+        enabled: true
+        alert: true
+      '50':
+        name: tomato_ringspot
+        display_name: Domates Halkalı Leke
+        color: [192, 96, 48]  # Turuncu-Kiremit
+        enabled: true
+        alert: true
+      '51':
+        name: tomato_big_bud
+        display_name: Domates İri Tomurcuk
+        color: [128, 64, 32]  # Koyu Turuncu-Kiremit
+        enabled: true
+        alert: true
+      '52':
+        name: tomato_bunchy_top
+        display_name: Domates Tepede Yığılma
+        color: [64, 32, 16]  # Çok Koyu Turuncu-Kiremit
+        enabled: true
+        alert: true
+
+      # Domates Olgunluk Durumları
+      '53':
+        name: tomato_ripe
+        display_name: Olgun Domates
+        color: [255, 0, 0]  # Kırmızı
+        enabled: true
+        alert: false
+        ripeness_info:
+          harvest_time: 0  # Hemen hasat edilmeli
+          color_ranges:  # RGB renk aralıkları
+            red: [200, 255]    # Yüksek kırmızı
+            green: [0, 50]     # Düşük yeşil
+            blue: [0, 50]      # Düşük mavi
+          ripeness_percentage: 100  # Tam olgun
+
+      '54':
+        name: tomato_semi_ripe
+        display_name: Yarı Olgun Domates
+        color: [255, 128, 0]  # Turuncu
+        enabled: true
+        alert: false
+        ripeness_info:
+          harvest_time: 3  # 3 gün içinde hasat edilmeli
+          color_ranges:  # RGB renk aralıkları
+            red: [180, 255]    # Yüksek-orta kırmızı
+            green: [40, 150]   # Orta yeşil
+            blue: [0, 50]      # Düşük mavi
+          ripeness_percentage: 60  # %60 olgun
+
+      '55':
+        name: tomato_unripe
+        display_name: Olgun Olmayan Domates
+        color: [0, 255, 0]  # Yeşil
+        enabled: true
+        alert: false
+        ripeness_info:
+          harvest_time: 7  # 7 gün içinde hasat edilebilir
+          color_ranges:  # RGB renk aralıkları
+            red: [0, 100]     # Düşük kırmızı
+            green: [180, 255] # Yüksek yeşil
+            blue: [0, 50]     # Düşük mavi
+          ripeness_percentage: 20  # %20 olgun
+
+      
+  zararli:
+    enabled: true
+    model_path: models/zararliTespiti_best.pt
+    model_type: yolov8
+    display_name: Zararlı Tespiti
+    description: Tarım zararlılar tespiti modeli
+    icon: fas fa-bug
     priority: 2
     confidence_threshold: 0.5
     classes:
+      # Sağlıklı/Hastalıklı Durumu
       '0':
         name: healthy
-        display_name: Sağlıklı
-        color:
-        - 0
-        - 255
-        - 0
+        display_name: Zararli
+        color: [0, 255, 0]  # Yeşil
         enabled: true
         alert: false
+
+      # Zararlılar (17 sınıf)
       '1':
-        name: diseased
-        display_name: Hastalıklı
-        color:
-        - 255
-        - 0
-        - 0
+        name: aphids
+        display_name: Yaprak Biti
+        color: [255, 0, 0]  # Kırmızı
         enabled: true
         alert: true
+      '2':
+        name: whitefly
+        display_name: Beyaz Sinek
+        color: [255, 128, 0]  # Turuncu
+        enabled: true
+        alert: true
+      '3':
+        name: spider_mites
+        display_name: Kirmizi Orumcek
+        color: [255, 0, 128]  # Pembe
+        enabled: true
+        alert: true
+      '4':
+        name: thrips
+        display_name: Trips
+        color: [128, 0, 255]  # Mor
+        enabled: true
+        alert: true
+      '5':
+        name: leafminer
+        display_name: Yaprak Galeri Sinegi
+        color: [0, 128, 255]  # Mavi
+        enabled: true
+        alert: true
+      '6':
+        name: caterpillar
+        display_name: Tirtil
+        color: [255, 255, 0]  # Sarı
+        enabled: true
+        alert: true
+      '7':
+        name: cutworm
+        display_name: Kesici Kurt
+        color: [128, 128, 0]  # Koyu Sarı
+        enabled: true
+        alert: true
+      '8':
+        name: hornworm
+        display_name: Boynuzlu Kurt
+        color: [0, 128, 128]  # Turkuaz
+        enabled: true
+        alert: true
+      '9':
+        name: fruit_worm
+        display_name: Meyve Kurdu
+        color: [128, 0, 128]  # Mor
+        enabled: true
+        alert: true
+      '10':
+        name: stink_bug
+        display_name: Kokulu Böcek
+        color: [128, 64, 0]  # Kahverengi
+        enabled: true
+        alert: true
+      '11':
+        name: beetle
+        display_name: Böcek
+        color: [64, 128, 0]  # Yeşil-Kahve
+        enabled: true
+        alert: true
+      '12':
+        name: leafhopper
+        display_name: Yaprak Piresi
+        color: [0, 64, 128]  # Lacivert
+        enabled: true
+        alert: true
+      '13':
+        name: mealybug
+        display_name: Unlu Bit
+        color: [128, 0, 64]  # Bordo
+        enabled: true
+        alert: true
+      '14':
+        name: scale_insect
+        display_name: Kabuklu Bit
+        color: [64, 0, 128]  # Mor-Lacivert
+        enabled: true
+        alert: true
+      '15':
+        name: fruit_fly
+        display_name: Meyve Sineği
+        color: [128, 128, 64]  # Haki
+        enabled: true
+        alert: true
+      '16':
+        name: nematode
+        display_name: Nematod
+        color: [64, 128, 128]  # Gri-Turkuaz
+        enabled: true
+        alert: true
+      '17':
+        name: slug
+        display_name: Sümüklü Böcek
+        color: [128, 64, 128]  # Mor-Gri
+        enabled: true
+        alert: true
+
+      
+
+
 visualization:
   box_thickness: 2
   text_size: 1.0
@@ -63,3 +584,69 @@ performance:
   device: cuda
   half_precision: true
   num_threads: 4
+
+# system:
+#   max_fps: 30
+#   detection_interval: 0.1
+#   save_detections: true
+#   save_interval: 300
+# models:
+#   general:
+#     enabled: true
+#     model_path: models/general.pt
+#     model_type: yolov8
+#     display_name: Genel Tespit
+#     description: Genel nesne tespiti modeli
+#     icon: fas fa-eye
+#     priority: 1
+#     confidence_threshold: 0.5
+#     classes:
+#       '0':
+#         name: person
+#         display_name: İnsan
+#         color:
+#         - 255
+#         - 0
+#         - 0
+#         enabled: true
+#         alert: true
+#   farm:
+#     enabled: true
+#     model_path: models/farm_best.pt
+#     model_type: yolov8
+#     display_name: Tarim Tespiti
+#     description: Tarim hastaliklari tespiti modeli
+#     icon: fas fa-leaf
+#     priority: 2
+#     confidence_threshold: 0.5
+#     classes:
+#       '0':
+#         name: healthy
+#         display_name: Sağlıklı
+#         color:
+#         - 0
+#         - 255
+#         - 0
+#         enabled: true
+#         alert: false
+#       '1':
+#         name: diseased
+#         display_name: Hastalıklı
+#         color:
+#         - 255
+#         - 0
+#         - 0
+#         enabled: true
+#         alert: true
+# visualization:
+#   box_thickness: 2
+#   text_size: 1.0
+#   text_thickness: 2
+#   show_labels: true
+#   show_confidence: true
+#   show_fps: true
+# performance:
+#   batch_size: 1
+#   device: cuda
+#   half_precision: true
+#   num_threads: 4

@@ -16,16 +16,19 @@ def test_basic():
     # Model dosyalarını kontrol et
     farm_model = "models/farm_best.pt"
     general_model = "models/yolov8n.pt"
+    zararli_model="models/zararli_best.pt"
     
     print(f"Farm model: {farm_model} - Mevcut: {os.path.exists(farm_model)}")
     print(f"General model: {general_model} - Mevcut: {os.path.exists(general_model)}")
+    print(f"Zararlı model: {zararli_model} - Mevcut: {os.path.exists(zararli_model)}")
     
     try:
         # Detector oluştur
         print("\nDetector oluşturuluyor...")
         detector = MultiModelYOLODetector(
             farm_model_path=farm_model,
-            general_model_path=general_model
+            general_model_path=general_model,
+            zararli_model_path=zararli_model,
         )
         print("✓ Detector oluşturuldu")
         

@@ -66,7 +66,7 @@ class ConfigManager:
             "models": {
                 "general": {
                     "enabled": True,
-                    "model_path": "models/general.pt",
+                    "model_path": "models/yolov8.pt",
                     "model_type": "yolov8",
                     "display_name": "Genel Tespit",
                     "description": "Genel nesne tespiti modeli",
@@ -85,7 +85,7 @@ class ConfigManager:
                 },
                 "farm": {
                     "enabled": True,
-                    "model_path": "models/farm.pt",
+                    "model_path": "models/farm_best.pt",
                     "model_type": "yolov8",
                     "display_name": "Tarım Tespiti",
                     "description": "Tarım hastalıkları tespiti modeli",
@@ -300,6 +300,23 @@ class ConfigManager:
         with self._lock:
             model_config = self.model_configs.get(model_name)
             if model_config:
+                return {class_id: class_config for class_id, class_config in model_config.classes.items()
+                       if class_config.enabled}
+            return {}
+    
+    def get_visualization_setting(self, setting_name: str, default_value=None):
+        """Visualization ayarını döndür"""
+        with self._lock:
+            visualization_config = self.config_data.get('visualization', {})
+            return visualization_config.get(setting_name, default_value)
+    
+    def get_system_setting(self, setting_name: str, default_value=None):
+        """Sistem ayarını döndür"""
+        with self._lock:
+            system_config = self.config_data.get('system', {})
+            return system_config.get(setting_name, default_value)
+            model_config = self.model_configs.get(model_name)
+            if model_config:
                 return {
                     class_id: class_config 
                     for class_id, class_config in model_config.classes.items()
@@ -448,3 +465,49 @@ class ConfigManager:
                     logger.error(f"Callback hatası: {e}")
         except Exception as e:
             logger.error(f"Notify change hatası: {e}")
+            
+    def get_detection_categories(self) -> Dict[str, List[Dict]]:
+        """Tespit kategorilerini ve alt kategorilerini döndür"""
+        try:
+            categories = {
+                "diseases": [],  # Hastalıklar
+                "pests": [],    # Zararlılar
+                "deficiencies": [], # Besin eksiklikleri
+                "ripeness": []  # Olgunluk durumu
+            }
+            
+            with self._lock:
+                farm_model = self.model_configs.get("farm")
+                if farm_model and farm_model.classes:
+                    for class_id, class_config in farm_model.classes.items():
+                        if not class_config.enabled:
+                            continue
+                            
+                        class_name = class_config.name.lower()
+                        class_data = {
+                            "id": class_id,
+                            "name": class_config.name,
+                            "display_name": class_config.display_name
+                        }
+                        
+                        # Zararlılar kategorisi
+                        if any(pest in class_name for pest in ["aphid", "whitefly", "mite", "thrips", "worm", "bug", "beetle", "fly"]):
+                            categories["pests"].append(class_data)
+                        
+                        # Besin eksikliği kategorisi
+                        elif "deficiency" in class_name:
+                            categories["deficiencies"].append(class_data)
+                        
+                        # Hastalık kategorisi (virüs, küf, leke, vb.)
+                        elif any(disease in class_name for disease in ["virus", "mold", "spot", "blight", "wilt", "rot"]):
+                            categories["diseases"].append(class_data)
+                        
+                        # Olgunluk durumu kategorisi
+                        elif any(ripeness in class_name for ripeness in ["ripe", "unripe", "semi_ripe"]):
+                            categories["ripeness"].append(class_data)
+            
+            return categories
+            
+        except Exception as e:
+            logger.error(f"Tespit kategorileri alma hatası: {e}")
+            raise

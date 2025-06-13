@@ -1,11 +1,16 @@
 import asyncio
 import logging
 import os
+import random
+from datetime import datetime, timedelta
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.responses import StreamingResponse, JSONResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
+from fastapi.staticfiles import StaticFiles
+from typing import Dict, List
 import uvicorn
 
 from models.multi_model_detector import MultiModelYOLODetector
@@ -15,7 +20,7 @@ from utils.config_manager import ConfigManager
 
 # Logging ayarları
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler('logs/app.log'),
@@ -44,13 +49,32 @@ async def lifespan(app: FastAPI):
         # WebSocket manager'ı başlat
         websocket_manager = WebSocketManager()
         
-        # YOLO detector'ı başlat
+        # YOLO detector'ı başlat (mevcut yapıya uygun)
         detector = MultiModelYOLODetector(
             general_model_path="models/yolov8n.pt",
-            farm_model_path="models/farm_best.pt"
+            farm_model_path="models/farm_best.pt",
+            zararli_model_path="models/zararliTespiti_best.pt",             
+            domatesMineral_model_path="models/DomatesModels/domatesMineralTespiti_best.pt",
+            domatesHastalik_model_path="models/DomatesModels/domatesHastalikTespiti_best.pt",
+            domatesOlgunluk_model_path="models/DomatesModels/domatesOlgunlukTespiti_best.pt"
         )
+        
+        # Varsayılan olarak sadece genel ve çiftlik modellerini aktif et
+        detector.enable_general = True
+        detector.enable_farm = True
+        detector.enable_zararli = True
+        detector.enable_domatesMineral = False
+        detector.enable_domatesHastalik = False
+        detector.enable_domatesOlgunluk = False
+        
         # initialize metodu yok, constructor'da yükleniyor
-        logger.info("YOLO detector başarıyla yüklendi")
+        # Model sınıflarını logla
+        logger.info(f"Genel model sınıfları: {list(detector.general_class_names.values())}...")
+        logger.info(f"Farm model sınıfları: {list(detector.farm_class_names.values())}...")
+        logger.info(f"Zararlı model sınıfları: {list(detector.zararli_class_names.values()) if hasattr(detector, 'zararli_class_names') else 'Yüklenemedi'}...")
+        
+        logger.info("YOLO detector başarıyla yüklendi - Varsayılan modeller aktif")
+               
         
         # Video manager'ı başlat
         video_manager = VideoManager(detector, websocket_manager)
@@ -136,6 +160,29 @@ async def get_models_info():
         logger.error(f"Model bilgisi hatası: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+# Güven eşiği endpoint'i
+@app.post("/api/models/confidence")
+async def update_confidence(confidence: float):
+    """Güven eşiği değerini güncelle"""
+    try:
+        if not detector:
+            raise HTTPException(status_code=503, detail="Detector hazır değil")
+            
+        if confidence < 0 or confidence > 1:
+            raise HTTPException(status_code=400, detail="Güven eşiği 0-1 arasında olmalıdır")
+        
+        # Güven eşiğini güncelle
+        detector.update_confidence_threshold(confidence)
+        
+        return {
+            "status": "success",
+            "message": f"Güven eşiği {confidence} olarak güncellendi"
+        }
+        
+    except Exception as e:
+        logger.error(f"Güven eşiği güncelleme hatası: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # Model toggle endpoint
 @app.post("/api/models/{model_name}/toggle")
 async def toggle_model(model_name: str, enabled: bool):
@@ -185,6 +232,18 @@ async def start_local_camera(camera_id: int = 0):
         logger.error(f"Kamera başlatma hatası: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/sources/{source_id}/stream")
+async def stream_source(source_id: str):
+    """Video stream endpoint"""
+    stream = video_manager.get_stream(source_id)
+    if not stream:
+        return {"status": "error", "message": f"Kaynak {source_id} bulunamadı veya aktif değil"}
+    
+    return StreamingResponse(
+        stream,
+        media_type="multipart/x-mixed-replace; boundary=frame"
+    )
+
 @app.post("/api/sources/{source_id}/stop")
 async def stop_source(source_id: str):
     """Video kaynağını durdur"""
@@ -224,25 +283,7 @@ async def get_sources():
         logger.error(f"Kaynak listeleme hatası: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/sources/{source_id}/stream")
-async def stream_source(source_id: str):
-    """Video stream endpoint"""
-    try:
-        if not video_manager:
-            raise HTTPException(status_code=503, detail="Video manager hazır değil")
-        
-        stream = video_manager.get_stream(source_id)
-        if not stream:
-            raise HTTPException(status_code=404, detail="Kaynak bulunamadı veya aktif değil")
-        
-        return StreamingResponse(
-            stream,
-            media_type="multipart/x-mixed-replace; boundary=frame"
-        )
-        
-    except Exception as e:
-        logger.error(f"Stream hatası: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+# Duplicate endpoint kaldırıldı - yukarıdaki stream_source endpoint'i kullanılacak
 
 @app.get("/api/sources/{source_id}/detections")
 async def get_detections(source_id: str):
@@ -267,6 +308,82 @@ async def get_detections(source_id: str):
             
     except Exception as e:
         logger.error(f"Detection alma hatası: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/detections/with-gps/{source_id}")
+async def get_detections_with_gps(source_id: str):
+    """Son tespit sonuçlarını GPS koordinatları ve kategorileri ile birlikte al"""
+    try:
+        if not video_manager:
+            raise HTTPException(status_code=503, detail="Video manager hazır değil")
+            
+        if not config_manager:
+            raise HTTPException(status_code=503, detail="Config manager hazır değil")
+        
+        detections = video_manager.get_latest_detections(source_id)
+        
+        if not detections:
+            return {
+                "status": "success",
+                "data": None,
+                "message": "Henüz tespit yok"
+            }
+
+        # Tüm kategorileri config'den al
+        categories = config_manager.get_detection_categories()
+        
+        # Tespit edilen sınıfların kategori eşleştirmelerini yap
+        class_to_category = {}
+        for category_name, items in categories.items():
+            for item in items:
+                class_to_category[item["name"]] = {
+                    "main_category": category_name,
+                    "display_name": item["display_name"]
+                }
+
+        # Tespit kategorilerine göre GPS koordinatları oluştur
+        gps_detections = []
+        for detection in detections:
+            class_name = detection.get("class", "").lower()
+            category_info = class_to_category.get(class_name)
+            
+            if category_info:
+                # Türkiye sınırları içinde random GPS koordinatları
+                gps_data = {
+                    "latitude": random.uniform(36.0, 42.0),  # Türkiye'nin enlem aralığı
+                    "longitude": random.uniform(26.0, 45.0),  # Türkiye'nin boylam aralığı
+                    "detection": detection,
+                    "main_category": category_info["main_category"],
+                    "display_name": category_info["display_name"],
+                    "severity": detection.get("confidence", 0) * 100  # Tespit şiddeti yüzdesi
+                }
+                
+                # Olgunluk durumu için ek bilgiler
+                if category_info["main_category"] == "ripeness":
+                    # Model konfigürasyonundan olgunluk bilgilerini al
+                    class_config = config_manager.get_class_config("farm", int(detection.get("class_id", 0)))
+                    if class_config and hasattr(class_config, "ripeness_info"):
+                        ripeness_info = class_config.ripeness_info
+                        gps_data.update({
+                            "harvest_info": {
+                                "days_until_harvest": ripeness_info.get("harvest_time", 0),
+                                "estimated_harvest_date": (datetime.now() + timedelta(days=ripeness_info.get("harvest_time", 0))).strftime("%Y-%m-%d"),
+                            },
+                            "color_analysis": {
+                                "ranges": ripeness_info.get("color_ranges", {}),
+                                "ripeness_percentage": ripeness_info.get("ripeness_percentage", 0)
+                            }
+                        })
+                
+                gps_detections.append(gps_data)
+        
+        return {
+            "status": "success",
+            "data": gps_detections
+        }
+            
+    except Exception as e:
+        logger.error(f"GPS ile detection alma hatası: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/statistics")

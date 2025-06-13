@@ -80,7 +80,7 @@ mkdir -p models logs recordings static/uploads
 python main.py
 
 # Model dosya yollarını belirtme
-MODEL_GENERAL=yolo11.pt MODEL_FARM=farm_best.pt python main.py
+MODEL_GENERAL=yolov8.pt MODEL_FARM=farm_best.pt python main.py
 ```
 
 ### Docker ile Çalıştırma

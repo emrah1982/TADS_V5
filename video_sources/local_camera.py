@@ -29,7 +29,7 @@ class LocalCameraSource:
         self.thread = None
         
         # Frame queue
-        self.frame_queue = Queue(maxsize=10)
+        self.frame_queue = Queue(maxsize=30)
         self.latest_frame = None
         self.latest_detections = None
         
@@ -275,29 +275,37 @@ class LocalCameraSource:
         """Frame generator (streaming için)"""
         while self.is_running:
             try:
-                frame_id, frame = self.frame_queue.get(timeout=1.0)
-                
-                # Detection yap
-                detection_result = self.detector.detect(frame, frame_id)
-                
-                # Annotated frame oluştur
-                if detection_result.all_detections:
-                    annotated_frame = self.detector.draw_detections(frame, detection_result)
+                # En son frame'i al
+                if self.latest_frame is not None:
+                    frame = self.latest_frame.copy()
+                    
+                    # Detection yap
+                    detection_result = self.detector.detect(frame, self.frame_id)
+                    
+                    # Annotated frame oluştur (sadece ham frame'i gönder, overlay frontend'de yapılacak)
+                    # Bu sayede hem farm hem general model sonuçları görünür
+                    annotated_frame = frame  # Ham frame gönder
+                    
+                    # JPEG encode (kaliteyi artır)
+                    encode_params = [
+                        cv2.IMWRITE_JPEG_QUALITY, 95,
+                        cv2.IMWRITE_JPEG_OPTIMIZE, 1
+                    ]
+                    _, buffer = cv2.imencode('.jpg', annotated_frame, encode_params)
+                    
+                    yield (b'--frame\r\n'
+                           b'Content-Type: image/jpeg\r\n'
+                           b'Cache-Control: no-cache, no-store, must-revalidate\r\n'
+                           b'Pragma: no-cache\r\n'
+                           b'Expires: 0\r\n\r\n' + buffer.tobytes() + b'\r\n')
                 else:
-                    annotated_frame = frame
-                
-                # JPEG encode
-                _, buffer = cv2.imencode('.jpg', annotated_frame,
-                                      [cv2.IMWRITE_JPEG_QUALITY, 85])
-                
-                yield (b'--frame\r\n'
-                       b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
-                
-            except Empty:
-                continue
+                    # Eğer frame yoksa kısa bekle
+                    time.sleep(0.033)  # ~30 FPS
+                    
             except Exception as e:
                 logger.error(f"Frame generator hatası: {e}")
-                break
+                time.sleep(0.1)
+                continue
 
 class LocalCameraManager:
     """Multiple local camera yönetimi için"""

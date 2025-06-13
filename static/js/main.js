@@ -200,16 +200,50 @@ class VideoSourceManager {
                 this.drawBoundingBox(detection, scaleX, scaleY, '#ed8936');
             });
         }
+        
+        // Zararlı model tespitleri (kırmızı)
+        if (detectionData.zararli_detections && detectionData.zararli_detections.length > 0) {
+            detectionData.zararli_detections.forEach(detection => {
+                this.drawBoundingBox(detection, scaleX, scaleY, '#e53e3e');
+            });
+        }
+        
+        // Domates Mineral model tespitleri (yeşil)
+        if (detectionData.domatesMineral_detections && detectionData.domatesMineral_detections.length > 0) {
+            detectionData.domatesMineral_detections.forEach(detection => {
+                this.drawBoundingBox(detection, scaleX, scaleY, '#38a169');
+            });
+        }
+        
+        // Domates Hastalık model tespitleri (mor)
+        if (detectionData.domatesHastalik_detections && detectionData.domatesHastalik_detections.length > 0) {
+            detectionData.domatesHastalik_detections.forEach(detection => {
+                this.drawBoundingBox(detection, scaleX, scaleY, '#805ad5');
+            });
+        }
+        
+        // Domates Olgunluk model tespitleri (pembe)
+        if (detectionData.domatesOlgunluk_detections && detectionData.domatesOlgunluk_detections.length > 0) {
+            detectionData.domatesOlgunluk_detections.forEach(detection => {
+                this.drawBoundingBox(detection, scaleX, scaleY, '#d53f8c');
+            });
+        }
     }
     
     drawBoundingBox(detection, scaleX, scaleY, color = null) {
         const [x1, y1, x2, y2] = detection.bbox;
         
-        // Koordinatları ölçekle
-        const scaledX1 = x1 * scaleX;
-        const scaledY1 = y1 * scaleY;
-        const scaledX2 = x2 * scaleX;
-        const scaledY2 = y2 * scaleY;
+        // Koordinatları ölçekle ve canvas sınırları içinde tut
+        const scaledX1 = Math.max(0, Math.min(this.canvasElement.width, x1 * scaleX));
+        const scaledY1 = Math.max(0, Math.min(this.canvasElement.height, y1 * scaleY));
+        const scaledX2 = Math.max(0, Math.min(this.canvasElement.width, x2 * scaleX));
+        const scaledY2 = Math.max(0, Math.min(this.canvasElement.height, y2 * scaleY));
+        
+        // Geçersiz koordinatları kontrol et
+        if (scaledX2 <= scaledX1 || scaledY2 <= scaledY1) {
+            console.warn('Geçersiz bounding box koordinatları:', detection.bbox);
+            return;
+        }
         
         // Renk belirle
         if (!color) {
@@ -226,12 +260,16 @@ class VideoSourceManager {
         this.ctx.font = '14px Arial';
         const textWidth = this.ctx.measureText(label).width;
         
+        // Label pozisyonunu canvas sınırları içinde tut
+        const labelX = Math.max(0, Math.min(this.canvasElement.width - textWidth - 10, scaledX1));
+        const labelY = Math.max(20, scaledY1);
+        
         this.ctx.fillStyle = color;
-        this.ctx.fillRect(scaledX1, scaledY1 - 20, textWidth + 10, 20);
+        this.ctx.fillRect(labelX, labelY - 20, textWidth + 10, 20);
         
         // Label metni
         this.ctx.fillStyle = 'white';
-        this.ctx.fillText(label, scaledX1 + 5, scaledY1 - 5);
+        this.ctx.fillText(label, labelX + 5, labelY - 5);
     }
     
     stop() {
@@ -370,9 +408,52 @@ function updateDetectionStats(detectionData) {
         updateDetectionList('farm-detections-list', detectionData.farm_detections);
     }
     
+    // Zararlı model istatistikleri
+    if (detectionData.zararli_detections) {
+        const zararliCount = detectionData.zararli_detections.length;
+        document.getElementById('zararli-detections').textContent = zararliCount;
+        
+        // Tespit listesini güncelle
+        updateDetectionList('zararli-detections-list', detectionData.zararli_detections);
+    }
+    
+    // Domates Mineral model istatistikleri
+    if (detectionData.domatesMineral_detections) {
+        const domatesMineralCount = detectionData.domatesMineral_detections.length;
+        document.getElementById('domates-mineral-detections').textContent = domatesMineralCount;
+        
+        // Tespit listesini güncelle
+        updateDetectionList('domates-mineral-detections-list', detectionData.domatesMineral_detections);
+    }
+    
+    // Domates Hastalık model istatistikleri
+    if (detectionData.domatesHastalik_detections) {
+        const domatesHastalikCount = detectionData.domatesHastalik_detections.length;
+        document.getElementById('domates-hastalik-detections').textContent = domatesHastalikCount;
+        
+        // Tespit listesini güncelle
+        updateDetectionList('domates-hastalik-detections-list', detectionData.domatesHastalik_detections);
+    }
+    
+    // Domates Olgunluk model istatistikleri
+    if (detectionData.domatesOlgunluk_detections) {
+        const domatesOlgunlukCount = detectionData.domatesOlgunluk_detections.length;
+        document.getElementById('domates-olgunluk-detections').textContent = domatesOlgunlukCount;
+        
+        // Tespit listesini güncelle
+        updateDetectionList('domates-olgunluk-detections-list', detectionData.domatesOlgunluk_detections);
+    }
+    
+    // Performance Overview kartlarını güncelle
+    updatePerformanceCards(detectionData);
+    
     // Toplam istatistikler
-    const totalCount = (detectionData.general_detections?.length || 0) + 
-                      (detectionData.farm_detections?.length || 0);
+    const totalCount = (detectionData.general_detections?.length || 0) +
+                      (detectionData.farm_detections?.length || 0) +
+                      (detectionData.zararli_detections?.length || 0) +
+                      (detectionData.domatesMineral_detections?.length || 0) +
+                      (detectionData.domatesHastalik_detections?.length || 0) +
+                      (detectionData.domatesOlgunluk_detections?.length || 0);
     document.getElementById('total-combined-detections').textContent = totalCount;
     
     // FPS güncelle
@@ -399,6 +480,45 @@ function updateDetectionList(elementId, detections) {
     `).join('');
     
     listElement.innerHTML = detectionItems;
+}
+
+// Performance kartlarını güncelle
+function updatePerformanceCards(detectionData) {
+    // Genel model performans kartı
+    if (detectionData.general_detections) {
+        const element = document.getElementById('total-general-detections');
+        if (element) element.textContent = detectionData.general_detections.length;
+    }
+    
+    // Farm model performans kartı
+    if (detectionData.farm_detections) {
+        const element = document.getElementById('total-farm-detections');
+        if (element) element.textContent = detectionData.farm_detections.length;
+    }
+    
+    // Zararlı model performans kartı
+    if (detectionData.zararli_detections) {
+        const element = document.getElementById('total-zararli-detections');
+        if (element) element.textContent = detectionData.zararli_detections.length;
+    }
+    
+    // Domates Mineral model performans kartı
+    if (detectionData.domatesMineral_detections) {
+        const element = document.getElementById('total-domates-mineral-detections');
+        if (element) element.textContent = detectionData.domatesMineral_detections.length;
+    }
+    
+    // Domates Hastalık model performans kartı
+    if (detectionData.domatesHastalik_detections) {
+        const element = document.getElementById('total-domates-hastalik-detections');
+        if (element) element.textContent = detectionData.domatesHastalik_detections.length;
+    }
+    
+    // Domates Olgunluk model performans kartı
+    if (detectionData.domatesOlgunluk_detections) {
+        const element = document.getElementById('total-domates-olgunluk-detections');
+        if (element) element.textContent = detectionData.domatesOlgunluk_detections.length;
+    }
 }
 
 // Model toggle
@@ -461,18 +581,87 @@ async function loadModelInfo() {
         const data = await response.json();
         
         // Model durumlarını güncelle
-        if (data.general) {
-            document.getElementById('general-model-status').className = 
-                `status-indicator ${data.general.loaded ? 'active' : ''}`;
-            document.getElementById('general-classes').textContent = 
-                data.general.class_count || '-';
-        }
-        
-        if (data.farm) {
-            document.getElementById('farm-model-status').className = 
-                `status-indicator ${data.farm.loaded ? 'active' : ''}`;
-            document.getElementById('farm-classes').textContent = 
-                data.farm.class_count || '-';
+        if (data.models) {
+            const models = data.models;
+            
+            // General model
+            if (models.general) {
+                document.getElementById('general-model-status').className =
+                    `status-indicator ${models.general.loaded ? 'active' : ''}`;
+                document.getElementById('general-classes').textContent =
+                    models.general.class_count || '-';
+            }
+            
+            // Farm model
+            if (models.farm) {
+                document.getElementById('farm-model-status').className =
+                    `status-indicator ${models.farm.loaded ? 'active' : ''}`;
+                document.getElementById('farm-classes').textContent =
+                    models.farm.class_count || '-';
+            }
+            
+            // Zararlı model
+            if (models.zararli) {
+                const statusElement = document.getElementById('zararli-model-status');
+                const classesElement = document.getElementById('zararli-classes');
+                if (statusElement) {
+                    statusElement.className = `status-indicator ${models.zararli.loaded ? 'active' : ''}`;
+                }
+                if (classesElement) {
+                    classesElement.textContent = models.zararli.class_count || '-';
+                }
+            }
+            
+            // Domates Mineral model
+            if (models.domatesMineral) {
+                const statusElement = document.getElementById('domates-mineral-model-status');
+                const classesElement = document.getElementById('domates-mineral-classes');
+                if (statusElement) {
+                    statusElement.className = `status-indicator ${models.domatesMineral.loaded ? 'active' : ''}`;
+                }
+                if (classesElement) {
+                    classesElement.textContent = models.domatesMineral.class_count || '-';
+                }
+            }
+            
+            // Domates Hastalık model
+            if (models.domatesHastalik) {
+                const statusElement = document.getElementById('domates-hastalik-model-status');
+                const classesElement = document.getElementById('domates-hastalik-classes');
+                if (statusElement) {
+                    statusElement.className = `status-indicator ${models.domatesHastalik.loaded ? 'active' : ''}`;
+                }
+                if (classesElement) {
+                    classesElement.textContent = models.domatesHastalik.class_count || '-';
+                }
+            }
+            
+            // Domates Olgunluk model
+            if (models.domatesOlgunluk) {
+                const statusElement = document.getElementById('domates-olgunluk-model-status');
+                const classesElement = document.getElementById('domates-olgunluk-classes');
+                if (statusElement) {
+                    statusElement.className = `status-indicator ${models.domatesOlgunluk.loaded ? 'active' : ''}`;
+                }
+                if (classesElement) {
+                    classesElement.textContent = models.domatesOlgunluk.class_count || '-';
+                }
+            }
+        } else {
+            // Eski format desteği
+            if (data.general) {
+                document.getElementById('general-model-status').className =
+                    `status-indicator ${data.general.loaded ? 'active' : ''}`;
+                document.getElementById('general-classes').textContent =
+                    data.general.class_count || '-';
+            }
+            
+            if (data.farm) {
+                document.getElementById('farm-model-status').className =
+                    `status-indicator ${data.farm.loaded ? 'active' : ''}`;
+                document.getElementById('farm-classes').textContent =
+                    data.farm.class_count || '-';
+            }
         }
         
     } catch (error) {
@@ -531,16 +720,18 @@ function showConfigTab(tabName) {
 }
 
 // Fonksiyonları global scope'a ekle (HTML onclick için)
-window.startLocalCamera = startLocalCamera;
-window.stopLocalCamera = stopLocalCamera;
-window.startDJIDrone = startDJIDrone;
-window.stopDJIDrone = stopDJIDrone;
-window.startParrotAnafi = startParrotAnafi;
-window.stopParrotAnafi = stopParrotAnafi;
-window.toggleModel = toggleModel;
-window.updateConfidenceThreshold = updateConfidenceThreshold;
-window.toggleConfigPanel = toggleConfigPanel;
-window.exportDetectionData = exportDetectionData;
-window.toggleFullscreen = toggleFullscreen;
-window.showConfigTab = showConfigTab;
-window.stopVideoSource = stopVideoSource;
+Object.assign(window, {
+    startLocalCamera,
+    stopLocalCamera,
+    startDJIDrone,
+    stopDJIDrone,
+    startParrotAnafi,
+    stopParrotAnafi,
+    toggleModel,
+    updateConfidenceThreshold,
+    toggleConfigPanel,
+    exportDetectionData,
+    toggleFullscreen,
+    showConfigTab,
+    stopVideoSource
+});

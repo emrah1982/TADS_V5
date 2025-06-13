@@ -305,7 +305,7 @@ class VideoManager:
             logger.error(f"Frame alma hatası ({source_id}): {e}")
             return None
     
-    def get_latest_detections(self, source_id: str) -> Optional[List[Dict]]:
+    def get_latest_detections(self, source_id: str) -> Optional[Dict]:
         """En son tespit sonuçlarını döndür"""
         with self._lock:
             if source_id not in self.latest_detections:
@@ -313,24 +313,27 @@ class VideoManager:
             
             detection_result = self.latest_detections[source_id]
             
+            if detection_result is None:
+                return None
+            
             # Detection'ları serialize et
             detections = []
-            for detection in detection_result.detections:
+            for detection in detection_result.all_detections:
                 detections.append({
-                    'class_id': detection.class_id,
-                    'class_name': detection.class_name,
-                    'confidence': detection.confidence,
-                    'bbox': detection.bbox,
-                    'center': detection.center,
-                    'area': detection.area
+                    'class_id': int(detection.class_id),
+                    'class_name': str(detection.class_name),
+                    'confidence': float(detection.confidence),
+                    'bbox': [float(x) for x in detection.bbox],
+                    'center': [float(x) for x in detection.center],
+                    'area': float(detection.area)
                 })
             
             return {
-                'frame_id': detection_result.frame_id,
-                'timestamp': detection_result.timestamp,
+                'frame_id': int(detection_result.frame_id),
+                'timestamp': float(detection_result.timestamp),
                 'detections': detections,
-                'processing_time': detection_result.processing_time,
-                'frame_size': detection_result.frame_size
+                'processing_time': float(detection_result.processing_time) if hasattr(detection_result, 'processing_time') else 0.0,
+                'frame_size': [int(x) for x in detection_result.frame_size] if detection_result.frame_size else [0, 0]
             }
     
     def get_active_sources(self) -> List[str]:
@@ -395,6 +398,172 @@ class VideoManager:
             
             # WebSocket üzerinden gönder (sadece detection varsa)
             if detection_result and detection_result.detections:
+                await self._send_detection_to_websocket(source_id, detection_result)
+            
+        except Exception as e:
+            logger.error(f"Detection işleme hatası ({source_id}): {e}")
+    
+    async def _on_frame_received(self, source_id: str, frame: Any, detection_result: MultiModelDetectionResult) -> None:
+        """Frame alındığında çağrılır"""
+        try:
+            # Frame'i WebSocket üzerinden gönder (isteğe bağlı)
+            # Bu işlem bandwidth yoğun olduğu için dikkatli kullanılmalı
+            pass
+            
+        except Exception as e:
+            logger.error(f"Frame işleme hatası ({source_id}): {e}")
+    
+    def _on_detection_received_sync(self, source_id: str, detection_result: MultiModelDetectionResult) -> None:
+        """Detection alındığında çağrılır (sync version)"""
+        try:
+            with self._lock:
+                # Latest detection'ı güncelle
+                self.latest_detections[source_id] = detection_result
+                
+                # History'e ekle
+                if source_id not in self.detection_history:
+                    self.detection_history[source_id] = []
+                
+                self.detection_history[source_id].append(detection_result)
+                
+                # History limitini kontrol et
+                if len(self.detection_history[source_id]) > self.max_history_length:
+                    self.detection_history[source_id] = self.detection_history[source_id][-self.max_history_length:]
+                
+                # Statistics güncelle
+                self.total_frames_processed += 1
+            
+            # WebSocket üzerinden gönder (detection varsa veya yoksa da gönder)
+            try:
+                # Saklanan main loop'u kullan
+                if self._main_loop and self._main_loop.is_running():
+                    asyncio.run_coroutine_threadsafe(
+                        self._send_detection_to_websocket(source_id, detection_result),
+                        self._main_loop
+                    )
+                else:
+                    logger.debug(f"WebSocket gönderimi atlandı - main event loop aktif değil")
+            except Exception as e:
+                # Event loop yoksa veya başka bir hata varsa, sadece logla
+                logger.debug(f"WebSocket gönderimi atlandı - {e}")
+            
+        except Exception as e:
+            logger.error(f"Sync detection işleme hatası ({source_id}): {e}")
+    
+    def _on_frame_received_sync(self, source_id: str, frame: Any, detection_result: MultiModelDetectionResult) -> None:
+        """Frame alındığında çağrılır (sync version)"""
+        try:
+            # Frame'i WebSocket üzerinden gönder (isteğe bağlı)
+            # Bu işlem bandwidth yoğun olduğu için dikkatli kullanılmalı
+            pass
+            
+        except Exception as e:
+            logger.error(f"Sync frame işleme hatası ({source_id}): {e}")
+    
+    async def _send_detection_to_websocket(self, source_id: str, detection_result: MultiModelDetectionResult) -> None:
+        """Detection sonuçlarını WebSocket üzerinden gönder"""
+        try:
+            # Aktif modellerin detection'larını serialize et
+            general_detections = []
+            if hasattr(detection_result, 'general_detections') and detection_result.general_detections:
+                for detection in detection_result.general_detections:
+                    general_detections.append({
+                        'class_id': int(detection.class_id),
+                        'class_name': str(detection.class_name),
+                        'confidence': float(detection.confidence),
+                        'bbox': [float(x) for x in detection.bbox],
+                        'center': [float(x) for x in detection.center],
+                        'area': float(detection.area),
+                        'model_type': detection.model_type.value
+                    })
+            
+            farm_detections = []
+            if hasattr(detection_result, 'farm_detections') and detection_result.farm_detections:
+                for detection in detection_result.farm_detections:
+                    farm_detections.append({
+                        'class_id': int(detection.class_id),
+                        'class_name': str(detection.class_name),
+                        'confidence': float(detection.confidence),
+                        'bbox': [float(x) for x in detection.bbox],
+                        'center': [float(x) for x in detection.center],
+                        'area': float(detection.area),
+                        'model_type': detection.model_type.value
+                    })
+            
+            zararli_detections = []
+            if hasattr(detection_result, 'zararli_detections') and detection_result.zararli_detections:
+                for detection in detection_result.zararli_detections:
+                    zararli_detections.append({
+                        'class_id': int(detection.class_id),
+                        'class_name': str(detection.class_name),
+                        'confidence': float(detection.confidence),
+                        'bbox': [float(x) for x in detection.bbox],
+                        'center': [float(x) for x in detection.center],
+                        'area': float(detection.area),
+                        'model_type': detection.model_type.value
+                    })
+            
+            # Sadece aktif modellerin detection'larını serialize et
+            all_detections = []
+            for detection in detection_result.all_detections:
+                all_detections.append({
+                    'class_id': int(detection.class_id),
+                    'class_name': str(detection.class_name),
+                    'confidence': float(detection.confidence),
+                    'bbox': [float(x) for x in detection.bbox],
+                    'center': [float(x) for x in detection.center],
+                    'area': float(detection.area),
+                    'model_type': detection.model_type.value
+                })
+            
+            # Processing times'ı da dönüştür
+            processing_times = {}
+            if hasattr(detection_result, 'processing_times') and detection_result.processing_times:
+                for key, value in detection_result.processing_times.items():
+                    processing_times[key] = float(value) if value is not None else 0.0
+            
+            message = {
+                'type': 'multi_model_detection',
+                'source_id': source_id,
+                'data': {
+                    'frame_id': int(detection_result.frame_id),
+                    'timestamp': float(detection_result.timestamp),
+                    'general_detections': general_detections,
+                    'farm_detections': farm_detections,
+                    'zararli_detections': zararli_detections,
+                    'all_detections': all_detections,
+                    'processing_times': processing_times,
+                    'frame_size': [int(x) for x in detection_result.frame_size] if detection_result.frame_size else [0, 0],
+                    'detection_counts': {
+                        'general': len(detection_result.general_detections),
+                        'farm': len(detection_result.farm_detections),
+                        'zararli': len(detection_result.zararli_detections),
+                        'total': len(detection_result.all_detections)
+                    }
+                }
+            }
+            
+            # WebSocket'e gönder
+            await self.websocket_manager.broadcast_to_source(source_id, json.dumps(message))
+            
+        except Exception as e:
+            logger.error(f"WebSocket gönderme hatası: {e}")
+            # Daha detaylı hata bilgisi için
+            import traceback
+            logger.error(f"Hata detayı: {traceback.format_exc()}")
+    
+    async def _start_background_tasks(self) -> None:
+        """Background task'leri başlat"""
+        if self.cleanup_task is None or self.cleanup_task.done():
+            self.cleanup_task = asyncio.create_task(self._cleanup_loop())
+        
+        if self.stats_task is None or self.stats_task.done():
+            self.stats_task = asyncio.create_task(self._stats_loop())
+    
+    async def _cleanup_loop(self) -> None:
+        """Periyodik temizlik döngüsü"""
+        while True:
+            try:
                 await asyncio.sleep(self.auto_cleanup_interval)
                 await self._perform_cleanup()
             except asyncio.CancelledError:

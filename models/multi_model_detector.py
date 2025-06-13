@@ -18,6 +18,7 @@ class ModelType(Enum):
     """Model türleri"""
     GENERAL = "general"  # yolo11.pt - genel nesneler
     FARM = "farm"        # farm_best.pt - tarım analizi
+    ZARARLI = "zararli"  # zararliTespiti_best.pt - tarım zararlılar
 
 @dataclass
 class Detection:
@@ -37,6 +38,10 @@ class MultiModelDetectionResult:
     timestamp: float
     general_detections: List[Detection]  # yolo11.pt sonuçları
     farm_detections: List[Detection]     # farm_best.pt sonuçları
+    zararli_detections: List[Detection]  # zararliTespiti_best.pt sonuçları
+    domatesMineral_detections: List[Detection]  # domatesMineralTespiti_best.pt sonuçları
+    domatesHastalik_detections: List[Detection]  # domatesHastalikTespiti_best.pt sonuçları
+    domatesOlgunluk_detections: List[Detection]  # domatesOlgunlukTespiti_best.pt sonuçları
     all_detections: List[Detection]      # Tüm sonuçlar birleşik
     processing_times: Dict[str, float]   # Model bazlı işleme süreleri
     frame_size: Tuple[int, int]
@@ -44,7 +49,7 @@ class MultiModelDetectionResult:
 class MultiModelYOLODetector:
     """Multi-model YOLO detector sınıfı"""
     
-    def __init__(self, farm_model_path: str, general_model_path: str):
+    def __init__(self, farm_model_path: str, general_model_path: str, zararli_model_path: str, domatesMineral_model_path: str, domatesHastalik_model_path: str, domatesOlgunluk_model_path: str):
         """
         Config-driven Multi-model YOLO detector'ı başlat
         
@@ -55,14 +60,29 @@ class MultiModelYOLODetector:
         # Model paths
         self.farm_model_path = farm_model_path
         self.general_model_path = general_model_path
+
+
+        self.zararli_model_path = zararli_model_path
+        self.domatesMineral_model_path = domatesMineral_model_path
+        self.domatesHastalik_model_path = domatesHastalik_model_path
+        self.domatesOlgunluk_model_path = domatesOlgunluk_model_path
+
         
         # Model instances
         self.farm_model = None
         self.general_model = None
-        
+        self.zararli_model = None
+        self.domatesMineral_model = None
+        self.domatesHastalik_model = None
+        self.domatesOlgunluk_model = None
         # Model enable flags
         self.enable_general = True
         self.enable_farm = True
+        self.enable_zararli = True
+        self.enable_domatesMineral = True
+        self.enable_domatesHastalik = True
+        self.enable_domatesOlgunluk = True
+
         
         # Device
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -76,12 +96,17 @@ class MultiModelYOLODetector:
         self.start_time = time.time()
         self.model_stats = {
             'farm': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0},
-            'general': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0}
+            'general': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0},            
+            'zararli': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0},
+            'domatesMineral': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0},
+            'domatesHastalik': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0},
+            'domatesOlgunluk': {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0}
         }
         
         # Class names
         self.general_class_names = {}
         self.farm_class_names = {}
+        self.zararli_class_names = {}
         
         # Config manager
         self.config_manager = get_config_manager()
@@ -104,13 +129,21 @@ class MultiModelYOLODetector:
                 logger.info(f"Genel YOLO modeli yükleniyor: {self.general_model_path}")
                 self.general_model = YOLO(self.general_model_path)
                 self.general_model.to(self.device)
-                self.general_class_names = self.general_model.names
+                
+                # Config'den sınıf isimlerini al
+                general_config = self.config_manager.get_model_config('general')
+                if general_config and hasattr(general_config, 'classes'):
+                    self.general_class_names = {int(k): v.display_name
+                                              for k, v in general_config.classes.items()}
+                else:
+                    self.general_class_names = self.general_model.names
+                
                 logger.info(f"Genel model yüklendi. Sınıf sayısı: {len(self.general_class_names)}")
                 
                 # Models dictionary'e ekle
                 self.models['general'] = {
                     'model': self.general_model,
-                    'config': self.config_manager.get_model_config('general') if hasattr(self, 'config_manager') else None
+                    'config': general_config
                 }
             
             # Farm model yükleme
@@ -118,18 +151,95 @@ class MultiModelYOLODetector:
                 logger.info(f"Farm modeli yükleniyor: {self.farm_model_path}")
                 self.farm_model = YOLO(self.farm_model_path)
                 self.farm_model.to(self.device)
-                self.farm_class_names = self.farm_model.names
+                
+                # Config'den farm model sınıflarını al
+                farm_config = self.config_manager.get_model_config('farm')
+                if farm_config and hasattr(farm_config, 'classes'):
+                    self.farm_class_names = {int(k): v.display_name
+                                           for k, v in farm_config.classes.items()}
+                else:
+                    self.farm_class_names = self.farm_model.names
+                
                 logger.info(f"Farm modeli yüklendi. Sınıf sayısı: {len(self.farm_class_names)}")
                 
                 # Models dictionary'e ekle
                 self.models['farm'] = {
                     'model': self.farm_model,
-                    'config': self.config_manager.get_model_config('farm') if hasattr(self, 'config_manager') else None
+                    'config': farm_config
+                }
+            
+            # Zararlı model yükleme
+            if self.enable_zararli and self.zararli_model_path:
+                logger.info(f"Zararlı modeli yükleniyor: {self.zararli_model_path}")
+                self.zararli_model = YOLO(self.zararli_model_path)
+                self.zararli_model.to(self.device)
+
+                 # Config'den sınıf isimlerini al
+                zararli_config = self.config_manager.get_model_config('zararli')
+                if zararli_config and hasattr(zararli_config, 'classes'):
+                    self.zararli_class_names = {int(k): v.display_name
+                                              for k, v in zararli_config.classes.items()}
+                else:
+                    self.zararli_class_names = self.zararli_model.names
+                
+                # Zararlı model sınıf isimlerini logla
+            if self.zararli_class_names:
+                logger.info(f"Zararlı modeli yüklendi. Sınıf sayısı: {len(self.zararli_class_names)}")
+                logger.info(f"Zararlı model sınıfları: {list(self.zararli_class_names.values())}")
+            else:
+                logger.info(f"Zararlı modeli yüklendi fakat sınıf isimleri yüklenemedi.")
+            
+            # Models dictionary'e ekle
+            self.models['zararli'] = {
+                'model': self.zararli_model,
+                'config': zararli_config
+            }
+            
+            # Domates Mineral model yükleme
+            if self.enable_domatesMineral and self.domatesMineral_model_path:
+                logger.info(f"Domates Mineral modeli yükleniyor: {self.domatesMineral_model_path}")
+                self.domatesMineral_model = YOLO(self.domatesMineral_model_path)
+                self.domatesMineral_model.to(self.device)
+                
+                logger.info(f"Domates Mineral modeli yüklendi. Sınıf sayısı: {len(self.domatesMineral_model.names)}")
+                
+                # Models dictionary'e ekle
+                self.models['domatesMineral'] = {
+                    'model': self.domatesMineral_model,
+                    'config': None
+                }
+            
+            # Domates Hastalık model yükleme
+            if self.enable_domatesHastalik and self.domatesHastalik_model_path:
+                logger.info(f"Domates Hastalık modeli yükleniyor: {self.domatesHastalik_model_path}")
+                self.domatesHastalik_model = YOLO(self.domatesHastalik_model_path)
+                self.domatesHastalik_model.to(self.device)
+                
+                logger.info(f"Domates Hastalık modeli yüklendi. Sınıf sayısı: {len(self.domatesHastalik_model.names)}")
+                
+                # Models dictionary'e ekle
+                self.models['domatesHastalik'] = {
+                    'model': self.domatesHastalik_model,
+                    'config': None
+                }
+            
+            # Domates Olgunluk model yükleme
+            if self.enable_domatesOlgunluk and hasattr(self, 'domatesOlgunluk_model_path') and self.domatesOlgunluk_model_path:
+                logger.info(f"Domates Olgunluk modeli yükleniyor: {self.domatesOlgunluk_model_path}")
+                self.domatesOlgunluk_model = YOLO(self.domatesOlgunluk_model_path)
+                self.domatesOlgunluk_model.to(self.device)
+                
+                logger.info(f"Domates Olgunluk modeli yüklendi. Sınıf sayısı: {len(self.domatesOlgunluk_model.names)}")
+                
+                # Models dictionary'e ekle
+                self.models['domatesOlgunluk'] = {
+                    'model': self.domatesOlgunluk_model,
+                    'config': None
                 }
             
             # Debug: Class names'leri logla
             if self.general_class_names:
-                logger.info(f"Genel model sınıfları: {list(self.general_class_names.values())[:10]}...")  # İlk 10 sınıf
+                logger.info(f"Genel model sınıfları: {list(self.general_class_names.values())[:10]}...")
             if self.farm_class_names:
                 logger.info(f"Farm model sınıfları: {list(self.farm_class_names.values())}")
             
@@ -156,17 +266,36 @@ class MultiModelYOLODetector:
         
         try:
             with self._lock:
+                # Debug: Mevcut modelleri logla
+                logger.info(f"Mevcut modeller: {list(self.models.keys())}")
+                logger.info(f"Enable flags - General: {self.enable_general}, Farm: {self.enable_farm}")
+                
                 # Her aktif model için inference çalıştır
                 for model_name, model_data in self.models.items():
-                    # Model config kontrolü
-                    if model_data.get('config') and not model_data['config'].enabled:
+                    logger.info(f"Model {model_name} işleniyor...")
+                    
+                    # Model aktif mi kontrolü
+                    is_active = False
+                    if model_name == 'general':
+                        is_active = self.enable_general
+                    elif model_name == 'farm':
+                        is_active = self.enable_farm
+                    elif model_name == 'zararli':
+                        is_active = self.enable_zararli
+                    elif model_name == 'domatesMineral':
+                        is_active = self.enable_domatesMineral
+                    elif model_name == 'domatesHastalik':
+                        is_active = self.enable_domatesHastalik
+                    elif model_name == 'domatesOlgunluk':
+                        is_active = self.enable_domatesOlgunluk
+                    
+                    if not is_active:
+                        logger.warning(f"Model {model_name} devre dışı")
+                        # Devre dışı modeller için boş liste ata
+                        model_detections[model_name] = []
                         continue
                     
-                    # Model aktif mi kontrolü (legacy)
-                    if model_name == 'general' and not self.enable_general:
-                        continue
-                    if model_name == 'farm' and not self.enable_farm:
-                        continue
+                    logger.info(f"Model {model_name} için inference çalıştırılıyor")
                     
                     model_start = time.time()
                     
@@ -185,6 +314,8 @@ class MultiModelYOLODetector:
                     model_detections[model_name] = detections
                     all_detections.extend(detections)
                     
+                    logger.info(f"Model {model_name}: {len(detections)} tespit bulundu, süre: {model_time:.3f}s")
+                    
                     # Stats güncelle
                     if model_name in self.model_stats:
                         self.model_stats[model_name]['frames'] += 1
@@ -201,12 +332,20 @@ class MultiModelYOLODetector:
                 # Legacy format için backward compatibility
                 general_detections = model_detections.get('general', [])
                 farm_detections = model_detections.get('farm', [])
+                zararli_detections = model_detections.get('zararli', [])
+                domatesMineral_detections = model_detections.get('domatesMineral', [])
+                domatesHastalik_detections = model_detections.get('domatesHastalik', [])
+                domatesOlgunluk_detections = model_detections.get('domatesOlgunluk', [])
                 
                 return MultiModelDetectionResult(
                     frame_id=frame_id,
                     timestamp=time.time(),
                     general_detections=general_detections,
                     farm_detections=farm_detections,
+                    zararli_detections=zararli_detections,
+                    domatesMineral_detections=domatesMineral_detections,
+                    domatesHastalik_detections=domatesHastalik_detections,
+                    domatesOlgunluk_detections=domatesOlgunluk_detections,
                     all_detections=all_detections,
                     processing_times=processing_times,
                     frame_size=(frame.shape[1], frame.shape[0])
@@ -219,87 +358,125 @@ class MultiModelYOLODetector:
                 timestamp=time.time(),
                 general_detections=[],
                 farm_detections=[],
+                zararli_detections=[],
+                domatesMineral_detections=[],
+                domatesHastalik_detections=[],
+                domatesOlgunluk_detections=[],
                 all_detections=[],
                 processing_times={'total': time.time() - start_time},
                 frame_size=(frame.shape[1], frame.shape[0])
             )
     
-    def _run_inference(self, model, frame: np.ndarray, model_name: str, model_config=None) -> List[Detection]:
+    def _run_inference(self, model, frame: np.ndarray, model_name: str, model_config=None):
         """Tek model inference"""
+        detections = []
+        
         try:
-            # Confidence threshold belirle
-            conf_threshold = 0.5  # Default
-            if model_config and hasattr(model_config, 'confidence_threshold'):
-                conf_threshold = model_config.confidence_threshold
+            # Model config'den confidence threshold al
+            conf_threshold = model_config.confidence_threshold if model_config else 0.5
             
-            # Model inference
-            results = model(frame, conf=conf_threshold, verbose=False)
-            detections = []
+            # Inference yap
+            results = model(frame, verbose=False)[0]  # conf parametresini kaldırdık
             
-            if len(results) > 0 and results[0].boxes is not None:
-                boxes = results[0].boxes
+            # Debug: Model inference sonuçlarını göster
+            logger.info(f"Model {model_name} inference sonuçları:")
+            logger.info(f"- Tespit sayısı: {len(results.boxes)}")
+            logger.info(f"- Ham sonuçlar: {results.boxes.data.tolist()}")
+            
+            # Tespitleri listeye dönüştür
+            for result in results.boxes.data.tolist():
+                x1, y1, x2, y2, confidence, class_id = result
                 
-                for i in range(len(boxes)):
-                    # Bounding box koordinatları
-                    x1, y1, x2, y2 = boxes.xyxy[i].cpu().numpy().astype(int)
-                    
-                    # Confidence ve class
-                    conf = float(boxes.conf[i].cpu().numpy())
-                    class_id = int(boxes.cls[i].cpu().numpy())
-                    
-                    # Config varsa sınıf kontrolü yap
-                    if hasattr(self, 'config_manager') and self.config_manager:
-                        # Config'ten sınıf bilgilerini al
-                        class_config = self.config_manager.get_class_config(model_name, class_id)
-                        
-                        # Sınıf aktif mi kontrol et
-                        if not self.config_manager.is_class_enabled(model_name, class_id):
-                            continue
-                        
-                        # Class name (config'ten)
-                        if class_config:
-                            class_name = class_config.display_name
-                        else:
-                            # Fallback to model's class names
-                            model_class_names = model.names if hasattr(model, 'names') else {}
-                            class_name = model_class_names.get(class_id, f"Class_{class_id}")
+                # Debug: Her tespit için detayları göster
+                logger.info(f"Tespit detayları ({model_name}):")
+                logger.info(f"- Koordinatlar: x1={x1:.1f}, y1={y1:.1f}, x2={x2:.1f}, y2={y2:.1f}")
+                logger.info(f"- Güven: {confidence:.2f}, Sınıf ID: {class_id}")
+                
+                # Güven eşiği kontrolü
+                if confidence < conf_threshold:
+                    logger.info(f"- Güven eşiği altında ({confidence:.2f} < {conf_threshold}), atlanıyor")
+                    continue
+                
+                # Koordinatları normalize et ve geçerlilik kontrolü yap
+                x1 = max(0, int(x1))
+                y1 = max(0, int(y1))
+                x2 = min(frame.shape[1], int(x2))
+                y2 = min(frame.shape[0], int(y2))
+                
+                # Debug: Normalize edilmiş koordinatlar
+                logger.info(f"- Normalize edilmiş koordinatlar: x1={x1}, y1={y1}, x2={x2}, y2={y2}")
+                
+                # Geçersiz bounding box kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    logger.warning(f"Geçersiz bounding box atlandı: ({x1}, {y1}, {x2}, {y2})")
+                    continue
+                
+                # Minimum boyut kontrolü (çok küçük bounding box'ları filtrele)
+                if (x2 - x1) < 10 or (y2 - y1) < 10:
+                    logger.info(f"- Çok küçük bounding box atlandı: {x2-x1}x{y2-y1} < 10x10")
+                    continue
+                
+                logger.info(f"- Geçerli bounding box: {x2-x1}x{y2-y1} piksel")
+                
+                # Class bilgisi ve koordinatları dönüştür
+                class_id = int(float(class_id))  # Önce float'a çevir, sonra int'e yuvarla
+                x1, y1, x2, y2 = map(int, [x1, y1, x2, y2])
+                confidence = float(confidence)
+                
+                # Model tipine göre sınıf ismini al
+                if model_name == 'farm':
+                    class_names = self.farm_class_names
+                elif model_name == 'general':
+                    class_names = self.general_class_names
+                elif model_name == 'zararli':
+                    class_names = self.zararli_class_names
+                    logger.debug(f"Zararlı sınıf isimleri: {class_names}")
+                    # Zararlı model için sınıf ID'sini düzelt
+                    if class_id >= len(model.names):
+                        logger.warning(f"Geçersiz sınıf ID: {class_id}, varsayılan 0 kullanılıyor")
+                        class_id = 0
+                else:
+                    # Domates mineral, hastalık, olgunluk modelleri için direkt model.names kullan
+                    class_names = {}
+                
+                # Sınıf ismini al
+                if model_name == 'zararli':
+                    # Zararlı model için özel sınıf ismi atama
+                    if class_id in self.zararli_class_names:
+                        class_name = self.zararli_class_names[class_id]
                     else:
-                        # Config yoksa direkt model'den al
-                        model_class_names = model.names if hasattr(model, 'names') else {}
-                        class_name = model_class_names.get(class_id, f"Class_{class_id}")
-                    
-                    # Center point ve area
-                    center_x = int((x1 + x2) / 2)
-                    center_y = int((y1 + y2) / 2)
-                    area = (x2 - x1) * (y2 - y1)
-                    
-                    # Model type
-                    model_type_enum = ModelType.GENERAL if model_name == 'general' else ModelType.FARM
-                    if model_name not in ['general', 'farm']:
-                        # Custom model için generic type
-                        model_type_enum = ModelType.GENERAL
-                    
-                    detection = Detection(
-                        class_id=class_id,
-                        class_name=class_name,
-                        confidence=conf,
-                        bbox=(x1, y1, x2, y2),
-                        center=(center_x, center_y),
-                        area=area,
-                        model_type=model_type_enum
-                    )
-                    
-                    detections.append(detection)
-            
-            return detections
-            
+                        class_name = f"zararli_{class_id}"
+                    logger.debug(f"Zararlı model için sınıf {class_id} -> {class_name}")
+                else:
+                    # Diğer modeller için normal sınıf ismi atama
+                    if class_names and class_id in class_names:
+                        class_name = class_names[class_id]
+                    else:
+                        class_name = model.names[class_id] if class_id in model.names else f"unknown_{class_id}"
+                    logger.debug(f"Model {model_name} için sınıf {class_id} -> {class_name}")
+                
+                # Detection objesi oluştur
+                detection = Detection(
+                    class_id=class_id,
+                    class_name=class_name,
+                    confidence=confidence,
+                    bbox=(x1, y1, x2, y2),
+                    center=((x1 + x2) // 2, (y1 + y2) // 2),
+                    area=(x2 - x1) * (y2 - y1),
+                    model_type=ModelType.ZARARLI if model_name == 'zararli'
+                              else ModelType.GENERAL if model_name == 'general'
+                              else ModelType.FARM
+                )
+                
+                detections.append(detection)
+        
         except Exception as e:
-            logger.error(f"Inference hatası ({model_name}): {e}")
+            logger.error(f"Model inference hatası ({model_name}): {e}")
             return []
+        
+        return detections
     
-    def draw_detections(self, frame: np.ndarray, 
-                       detection_result: MultiModelDetectionResult,
-                       show_model_type: bool = True) -> np.ndarray:
+    def draw_detections(self, frame: np.ndarray, detection_result: MultiModelDetectionResult, show_model_type: bool = True):
         """
         Frame üzerine config-driven multi-model tespit sonuçlarını çiz
         
@@ -321,112 +498,268 @@ class MultiModelYOLODetector:
         show_confidence = bbox_settings.get('show_confidence', True)
         show_class_name = bbox_settings.get('show_class_name', True)
         
-        label_settings = self.config_manager.get_visualization_setting('labels', {})
-        show_turkish_names = label_settings.get('show_turkish_names', True)
-        show_confidence_percentage = label_settings.get('show_confidence_percentage', True)
-        text_color = tuple(label_settings.get('text_color', [255, 255, 255]))
-        
-        # Detection'ları model priority'sine göre sırala
-        sorted_detections = sorted(
-            detection_result.all_detections,
-            key=lambda d: self._get_model_priority(d)
-        )
-        
-        for detection in sorted_detections:
-            x1, y1, x2, y2 = detection.bbox
-            
-            # Config'ten renk al
-            color = self._get_color_for_detection(detection)
-            
-            # Bounding box çiz
-            cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
-            
-            # Label oluştur
-            label_parts = []
-            
-            if show_model_type:
-                model_name = self._get_model_name_from_detection(detection)
-                model_config = self.config_manager.get_model_config(model_name)
-                if model_config:
-                    label_parts.append(f"[{model_config.icon}]")
-            
-            if show_class_name:
-                if show_turkish_names:
+        # Farm detectionları çiz (yeşil)
+        for detection in detection_result.farm_detections:
+            try:
+                x1, y1, x2, y2 = detection.bbox
+                
+                # Koordinatları frame sınırları içinde tut (genel model ile aynı yaklaşım)
+                x1 = max(0, min(frame.shape[1] - 1, int(x1)))
+                y1 = max(0, min(frame.shape[0] - 1, int(y1)))
+                x2 = max(0, min(frame.shape[1], int(x2)))
+                y2 = max(0, min(frame.shape[0], int(y2)))
+                
+                # Geçersiz koordinat kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    continue
+                
+                color = (50, 205, 50)  # BGR format - Açık yeşil
+                
+                # Bounding box çiz
+                cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
+                
+                # Label hazırla
+                label_parts = []
+                if show_class_name:
                     label_parts.append(detection.class_name)
-                else:
-                    # Original class name'i al
-                    class_config = self._get_class_config_from_detection(detection)
-                    original_name = class_config.name if class_config else detection.class_name
-                    label_parts.append(original_name)
-            
-            if show_confidence and show_confidence_percentage:
-                label_parts.append(f"{detection.confidence:.2f}")
-            
-            label = " ".join(label_parts)
-            
-            # Label background size
-            label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)[0]
-            
-            # Label background çiz
-            cv2.rectangle(
-                annotated_frame,
-                (x1, y1 - label_size[1] - 10),
-                (x1 + label_size[0], y1),
-                color,
-                -1
-            )
-            
-            # Label text çiz
-            cv2.putText(
-                annotated_frame,
-                label,
-                (x1, y1 - 5),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                font_scale,
-                text_color,
-                font_thickness
-            )
-            
-            # Center point çiz
-            cv2.circle(annotated_frame, detection.center, 3, color, -1)
+                if show_confidence:
+                    label_parts.append(f"{detection.confidence:.2f}")
+                if show_model_type:
+                    label_parts.append("(farm)")
+                
+                if label_parts:
+                    label = " ".join(label_parts)
+                    
+                    # Label background
+                    (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+                    cv2.rectangle(annotated_frame, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
+                    
+                    # Label text
+                    cv2.putText(annotated_frame, label, (x1, y1 - 5),
+                              cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), font_thickness)
+            except Exception as e:
+                logger.error(f"Farm detection çizim hatası: {e}")
+                continue
         
-        # Performance info çiz
-        if self.config_manager.get_visualization_setting('performance', {}).get('show_fps', True):
-            self._draw_performance_info(annotated_frame, detection_result)
+        # General detectionları çiz (mavi)
+        for detection in detection_result.general_detections:
+            try:
+                x1, y1, x2, y2 = detection.bbox
+                
+                # Koordinatları frame sınırları içinde tut
+                x1 = max(0, min(frame.shape[1] - 1, int(x1)))
+                y1 = max(0, min(frame.shape[0] - 1, int(y1)))
+                x2 = max(0, min(frame.shape[1], int(x2)))
+                y2 = max(0, min(frame.shape[0], int(y2)))
+                
+                # Geçersiz koordinat kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    continue
+                
+                color = (255, 128, 0)  # BGR format - Turuncu-mavi karışımı
+                
+                # Bounding box çiz
+                cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
+                
+                # Label hazırla
+                label_parts = []
+                if show_class_name:
+                    label_parts.append(detection.class_name)
+                if show_confidence:
+                    label_parts.append(f"{detection.confidence:.2f}")
+                if show_model_type:
+                    label_parts.append("(general)")
+                
+                if label_parts:
+                    label = " ".join(label_parts)
+                    
+                    # Label background
+                    (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+                    cv2.rectangle(annotated_frame, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
+                    
+                    # Label text
+                    cv2.putText(annotated_frame, label, (x1, y1 - 5),
+                              cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), font_thickness)
+            except Exception as e:
+                logger.error(f"General detection çizim hatası: {e}")
+                continue
+        
+        # Zararlı detectionları çiz (kırmızı)
+        for detection in detection_result.zararli_detections:
+            try:
+                x1, y1, x2, y2 = detection.bbox
+                
+                # Koordinatları frame sınırları içinde tut
+                x1 = max(0, min(frame.shape[1] - 1, int(x1)))
+                y1 = max(0, min(frame.shape[0] - 1, int(y1)))
+                x2 = max(0, min(frame.shape[1], int(x2)))
+                y2 = max(0, min(frame.shape[0], int(y2)))
+                
+                # Geçersiz koordinat kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    continue
+                
+                color = (0, 0, 255)  # BGR format - Kırmızı
+                
+                # Bounding box çiz
+                cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
+                
+                # Label hazırla
+                label_parts = []
+                if show_class_name:
+                    label_parts.append(detection.class_name)
+                if show_confidence:
+                    label_parts.append(f"{detection.confidence:.2f}")
+                if show_model_type:
+                    label_parts.append("(zararlı)")
+                
+                if label_parts:
+                    label = " ".join(label_parts)
+                    
+                    # Label background
+                    (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+                    cv2.rectangle(annotated_frame, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
+                    
+                    # Label text
+                    cv2.putText(annotated_frame, label, (x1, y1 - 5),
+                              cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), font_thickness)
+            except Exception as e:
+                logger.error(f"Zararlı detection çizim hatası: {e}")
+                continue
+        
+        # Domates Mineral detectionları çiz (mor)
+        for detection in detection_result.domatesMineral_detections:
+            try:
+                x1, y1, x2, y2 = detection.bbox
+                
+                # Koordinatları frame sınırları içinde tut
+                x1 = max(0, min(frame.shape[1] - 1, int(x1)))
+                y1 = max(0, min(frame.shape[0] - 1, int(y1)))
+                x2 = max(0, min(frame.shape[1], int(x2)))
+                y2 = max(0, min(frame.shape[0], int(y2)))
+                
+                # Geçersiz koordinat kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    continue
+                
+                color = (255, 0, 255)  # BGR format - Mor
+                
+                # Bounding box çiz
+                cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
+                
+                # Label hazırla
+                label_parts = []
+                if show_class_name:
+                    label_parts.append(detection.class_name)
+                if show_confidence:
+                    label_parts.append(f"{detection.confidence:.2f}")
+                if show_model_type:
+                    label_parts.append("(mineral)")
+                
+                if label_parts:
+                    label = " ".join(label_parts)
+                    
+                    # Label background
+                    (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+                    cv2.rectangle(annotated_frame, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
+                    
+                    # Label text
+                    cv2.putText(annotated_frame, label, (x1, y1 - 5),
+                              cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), font_thickness)
+            except Exception as e:
+                logger.error(f"Domates Mineral detection çizim hatası: {e}")
+                continue
+        
+        # Domates Hastalık detectionları çiz (sarı)
+        for detection in detection_result.domatesHastalik_detections:
+            try:
+                x1, y1, x2, y2 = detection.bbox
+                
+                # Koordinatları frame sınırları içinde tut
+                x1 = max(0, min(frame.shape[1] - 1, int(x1)))
+                y1 = max(0, min(frame.shape[0] - 1, int(y1)))
+                x2 = max(0, min(frame.shape[1], int(x2)))
+                y2 = max(0, min(frame.shape[0], int(y2)))
+                
+                # Geçersiz koordinat kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    continue
+                
+                color = (0, 255, 255)  # BGR format - Sarı
+                
+                # Bounding box çiz
+                cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
+                
+                # Label hazırla
+                label_parts = []
+                if show_class_name:
+                    label_parts.append(detection.class_name)
+                if show_confidence:
+                    label_parts.append(f"{detection.confidence:.2f}")
+                if show_model_type:
+                    label_parts.append("(hastalık)")
+                
+                if label_parts:
+                    label = " ".join(label_parts)
+                    
+                    # Label background
+                    (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+                    cv2.rectangle(annotated_frame, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
+                    
+                    # Label text
+                    cv2.putText(annotated_frame, label, (x1, y1 - 5),
+                              cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), font_thickness)
+            except Exception as e:
+                logger.error(f"Domates Hastalık detection çizim hatası: {e}")
+                continue
+        
+        # Domates Olgunluk detectionları çiz (cyan)
+        for detection in detection_result.domatesOlgunluk_detections:
+            try:
+                x1, y1, x2, y2 = detection.bbox
+                
+                # Koordinatları frame sınırları içinde tut
+                x1 = max(0, min(frame.shape[1] - 1, int(x1)))
+                y1 = max(0, min(frame.shape[0] - 1, int(y1)))
+                x2 = max(0, min(frame.shape[1], int(x2)))
+                y2 = max(0, min(frame.shape[0], int(y2)))
+                
+                # Geçersiz koordinat kontrolü
+                if x2 <= x1 or y2 <= y1:
+                    continue
+                
+                color = (255, 255, 0)  # BGR format - Cyan
+                
+                # Bounding box çiz
+                cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), color, thickness)
+                
+                # Label hazırla
+                label_parts = []
+                if show_class_name:
+                    label_parts.append(detection.class_name)
+                if show_confidence:
+                    label_parts.append(f"{detection.confidence:.2f}")
+                if show_model_type:
+                    label_parts.append("(olgunluk)")
+                
+                if label_parts:
+                    label = " ".join(label_parts)
+                    
+                    # Label background
+                    (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+                    cv2.rectangle(annotated_frame, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
+                    
+                    # Label text
+                    cv2.putText(annotated_frame, label, (x1, y1 - 5),
+                              cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), font_thickness)
+            except Exception as e:
+                logger.error(f"Domates Olgunluk detection çizim hatası: {e}")
+                continue
+        
+        # Performance bilgilerini çiz
+        self._draw_performance_info(annotated_frame, detection_result)
         
         return annotated_frame
-    
-    def _get_color_for_detection(self, detection: Detection) -> Tuple[int, int, int]:
-        """Config'ten detection rengi döndür"""
-        model_name = self._get_model_name_from_detection(detection)
-        color = self.config_manager.get_class_color(model_name, detection.class_id)
-        
-        # BGR formatına çevir (OpenCV için)
-        return (int(color[2]), int(color[1]), int(color[0]))
-    
-    def _get_model_name_from_detection(self, detection: Detection) -> str:
-        """Detection'dan model adını çıkar"""
-        # Model type'a göre model adını belirle
-        if detection.model_type == ModelType.GENERAL:
-            return 'general'
-        elif detection.model_type == ModelType.FARM:
-            return 'farm'
-        else:
-            # İlk bulunan aktif modeli döndür (fallback)
-            for model_name in self.models.keys():
-                return model_name
-            return 'unknown'
-    
-    def _get_class_config_from_detection(self, detection: Detection) -> Optional[ClassConfig]:
-        """Detection'dan class config'i al"""
-        model_name = self._get_model_name_from_detection(detection)
-        return self.config_manager.get_class_config(model_name, detection.class_id)
-    
-    def _get_model_priority(self, detection: Detection) -> int:
-        """Detection'ın model priority'sini döndür"""
-        model_name = self._get_model_name_from_detection(detection)
-        model_config = self.config_manager.get_model_config(model_name)
-        return model_config.priority if model_config else 999
     
     def _draw_performance_info(self, frame: np.ndarray, detection_result: MultiModelDetectionResult):
         """Frame üzerine performance bilgilerini çiz"""
@@ -443,246 +776,85 @@ class MultiModelYOLODetector:
         else:  # bottom_right
             x, y = frame.shape[1] - 300, frame.shape[0] - 100
         
-        y_offset = 0
+        # Performance text'i çiz
+        fps = 1.0 / detection_result.processing_times.get('total', 0.001)
+        perf_text = f"FPS: {fps:.1f} | Total: {len(detection_result.all_detections)}"
         
-        # Model bazlı bilgiler
-        for model_name, model_data in self.models.items():
-            if not model_data['config'].enabled:
-                continue
-                
-            model_config = model_data['config']
-            detection_count = len([d for d in detection_result.all_detections 
-                                 if self._get_model_name_from_detection(d) == model_name])
-            processing_time = detection_result.processing_times.get(model_name, 0)
-            
-            text = f"{model_config.icon} {model_config.display_name}: {detection_count} ({processing_time*1000:.1f}ms)"
-            
-            # Model'e göre renk
-            if model_name == 'general':
-                color = (255, 255, 255)  # Beyaz
-            elif model_name == 'farm':
-                color = (0, 255, 255)    # Sarı
-            else:
-                color = (255, 255, 255)  # Beyaz (default)
-            
-            cv2.putText(frame, text, (x, y + y_offset), cv2.FONT_HERSHEY_SIMPLEX, 
-                       0.6, color, 2)
-            y_offset += 25
-        
-        # Total bilgi
-        total_time = detection_result.processing_times.get('total', 0)
-        fps = 1.0 / total_time if total_time > 0 else 0
-        text = f"Total: {len(detection_result.all_detections)} ({total_time*1000:.1f}ms | {fps:.1f} FPS)"
-        cv2.putText(frame, text, (x, y + y_offset), cv2.FONT_HERSHEY_SIMPLEX,
-                   0.6, (0, 255, 0), 2)
+        cv2.putText(frame, perf_text, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
     
     def get_statistics(self) -> Dict:
-        """Config-driven performance istatistiklerini döndür"""
-        current_time = time.time()
-        elapsed_time = current_time - self.start_time
-        
-        stats = {
-            "overall": {
-                "frames_processed": self.frame_count,
-                "fps": self.frame_count / elapsed_time if elapsed_time > 0 else 0,
-                "avg_total_inference_time": self.total_inference_time / self.frame_count if self.frame_count > 0 else 0,
-                "total_time": elapsed_time,
-                "device": self.device,
-                "active_models": len(self.models)
-            },
-            "models": {}
-        }
-        
-        # Model bazlı istatistikler
-        for model_name, model_data in self.models.items():
-            model_config = model_data['config']
-            model_stat = self.model_stats[model_name]
-            
-            if model_stat['frames'] > 0:
-                stats["models"][model_name] = {
-                    "enabled": model_config.enabled,
-                    "frames_processed": model_stat['frames'],
-                    "avg_inference_time": model_stat['total_time'] / model_stat['frames'],
-                    "total_inference_time": model_stat['total_time'],
-                    "model_path": model_config.model_path,
-                    "display_name": model_config.display_name,
-                    "class_count": len(model_config.classes),
-                    "enabled_class_count": len(self.config_manager.get_enabled_classes(model_name)),
-                    "last_detection_count": model_stat['last_detection_count']
-                }
-        
-        return stats
-    
-    def get_model_info(self) -> Dict:
-        """Config-driven model bilgilerini döndür"""
-        models_info = {}
-        
-        for model_name, model_data in self.models.items():
-            model_config = model_data['config']
-            
-            models_info[model_name] = {
-                "enabled": model_config.enabled,
-                "path": model_config.model_path,
-                "display_name": model_config.display_name,
-                "description": model_config.description,
-                "icon": model_config.icon,
-                "confidence_threshold": model_config.confidence_threshold,
-                "loaded": True,
-                "classes": {
-                    class_id: {
-                        "name": class_config.name,
-                        "display_name": class_config.display_name,
-                        "enabled": class_config.enabled,
-                        "alert": class_config.alert,
-                        "color": class_config.color
-                    }
-                    for class_id, class_config in model_config.classes.items()
-                }
-            }
-        
-        # Config'de tanımlı ama yüklenmemiş modeller
-        all_model_configs = self.config_manager.get_all_model_configs()
-        for model_name, model_config in all_model_configs.items():
-            if model_name not in models_info:
-                models_info[model_name] = {
-                    "enabled": model_config.enabled,
-                    "path": model_config.model_path,
-                    "display_name": model_config.display_name,
-                    "description": model_config.description,
-                    "icon": model_config.icon,
-                    "confidence_threshold": model_config.confidence_threshold,
-                    "loaded": False,
-                    "error": "Model dosyası bulunamadı veya yüklenemedi"
-                }
+        """İstatistikleri döndür"""
+        elapsed_time = time.time() - self.start_time
+        avg_fps = self.frame_count / elapsed_time if elapsed_time > 0 else 0
         
         return {
-            "device": self.device,
-            "total_models": len(all_model_configs),
-            "loaded_models": len(self.models),
-            "models": models_info
+            'total_frames': self.frame_count,
+            'elapsed_time': elapsed_time,
+            'average_fps': avg_fps,
+            'models': self.model_stats
         }
     
-    def set_model_enabled(self, model_name: str, enabled: bool):
-        """Config'ten model'i aktif/pasif yap"""
-        self.config_manager.set_model_enabled(model_name, enabled)
-    
-    def update_confidence_threshold(self, model_name: str, threshold: float):
-        """Config'ten confidence threshold'unu güncelle"""
-        self.config_manager.set_confidence_threshold(model_name, threshold)
-    
-    def set_class_enabled(self, model_name: str, class_id: int, enabled: bool):
-        """Config'ten sınıfı aktif/pasif et"""
-        self.config_manager.set_class_enabled(model_name, class_id, enabled)
-    
-    def set_class_color(self, model_name: str, class_id: int, color: Tuple[int, int, int]):
-        """Config'ten sınıf rengini ayarla"""
-        self.config_manager.set_class_color(model_name, class_id, color)
-    
-    def _on_config_change(self, change_type: str, key: str, value):
-        """Config değişikliği callback'i"""
-        logger.info(f"Config değişikliği: {change_type} - {key} = {value}")
-        
-        if change_type == 'model_enabled':
-            # Model aktif/pasif durumu değişti
-            if value:  # Model aktif edildi
-                self._load_single_model(key)
-            else:  # Model pasif edildi
-                self._unload_single_model(key)
-        
-        elif change_type == 'config_reloaded':
-            # Config yeniden yüklendi, tüm modelleri yeniden yükle
-            logger.info("Config yeniden yüklendiği için modeller yeniden yükleniyor...")
-            self._reload_all_models()
-    
-    def _load_single_model(self, model_name: str):
-        """Tek bir modeli yükle"""
-        try:
-            model_config = self.config_manager.get_model_config(model_name)
-            if not model_config or not model_config.enabled:
-                return
-            
-            if model_name in self.models:
-                logger.info(f"Model zaten yüklü: {model_name}")
-                return
-            
-            logger.info(f"Model yükleniyor: {model_name}")
-            
-            if not self.config_manager.validate_model_path(model_name):
-                logger.error(f"Model dosyası bulunamadı: {model_config.model_path}")
-                return
-            
-            model = YOLO(model_config.model_path)
-            model.to(self.device)
-            
-            self.models[model_name] = {
-                'model': model,
-                'config': model_config
+    def get_model_info(self) -> Dict:
+        """Model bilgilerini döndür"""
+        return {
+            'general': {
+                'enabled': self.enable_general,
+                'path': self.general_model_path,
+                'classes': len(self.general_class_names)
+            },
+            'farm': {
+                'enabled': self.enable_farm,
+                'path': self.farm_model_path,
+                'classes': len(self.farm_class_names)
+            },
+            'zararli': {
+                'enabled': self.enable_zararli,
+                'path': self.zararli_model_path,
+                'classes': len(self.zararli_model.names) if self.zararli_model else 0
+            },
+            'domatesMineral': {
+                'enabled': self.enable_domatesMineral,
+                'path': self.domatesMineral_model_path,
+                'classes': len(self.domatesMineral_model.names) if self.domatesMineral_model else 0
+            },
+            'domatesHastalik': {
+                'enabled': self.enable_domatesHastalik,
+                'path': self.domatesHastalik_model_path,
+                'classes': len(self.domatesHastalik_model.names) if self.domatesHastalik_model else 0
+            },
+            'domatesOlgunluk': {
+                'enabled': self.enable_domatesOlgunluk,
+                'path': self.domatesOlgunluk_model_path,
+                'classes': len(self.domatesOlgunluk_model.names) if self.domatesOlgunluk_model else 0
             }
-            
-            self.model_stats[model_name] = {
-                'frames': 0,
-                'total_time': 0.0,
-                'last_detection_count': 0
-            }
-            
-            logger.info(f"Model başarıyla yüklendi: {model_name}")
-            
-        except Exception as e:
-            logger.error(f"Model yükleme hatası ({model_name}): {e}")
+        }
     
-    def _unload_single_model(self, model_name: str):
-        """Tek bir modeli kaldır"""
-        try:
-            if model_name in self.models:
-                del self.models[model_name]
-                if model_name in self.model_stats:
-                    del self.model_stats[model_name]
-                logger.info(f"Model kaldırıldı: {model_name}")
-            
-        except Exception as e:
-            logger.error(f"Model kaldırma hatası ({model_name}): {e}")
+    def set_model_enabled(self, model_type: str, enabled: bool):
+        """Model durumunu değiştir"""
+        if model_type == 'general':
+            self.enable_general = enabled
+        elif model_type == 'farm':
+            self.enable_farm = enabled
+        elif model_type == 'zararli':
+            self.enable_zararli = enabled
+        elif model_type == 'domatesMineral':
+            self.enable_domatesMineral = enabled
+        elif model_type == 'domatesHastalik':
+            self.enable_domatesHastalik = enabled
+        elif model_type == 'domatesOlgunluk':
+            self.enable_domatesOlgunluk = enabled
+        else:
+            logger.warning(f"Bilinmeyen model tipi: {model_type}")
+            return False
+        return True
     
-    def _reload_all_models(self):
-        """Tüm modelleri yeniden yükle"""
-        try:
-            # Mevcut modelleri temizle
-            self.models.clear()
-            self.model_stats.clear()
-            
-            # Modelleri yeniden yükle
-            self._load_models()
-            
-            logger.info("Tüm modeller yeniden yüklendi")
-            
-        except Exception as e:
-            logger.error(f"Modelleri yeniden yükleme hatası: {e}")
-    
-    def get_config_summary(self) -> Dict:
-        """Config özetini döndür"""
-        return self.config_manager.get_config_summary()
-    
-    def reload_config(self):
-        """Config'i yeniden yükle"""
-        self.config_manager.reload_config()
-    
-    def export_config(self, format: str = "yaml", file_path: str = None) -> str:
-        """Config'i export et"""
-        return self.config_manager.export_config(format, file_path)
-    
-    def import_config(self, file_path: str, merge: bool = False):
-        """Config'i import et"""
-        self.config_manager.import_config(file_path, merge)
-    
-    # Legacy methods for backward compatibility
-    def get_class_names(self) -> Dict[int, str]:
-        """Legacy: Sınıf isimlerini döndür"""
-        all_classes = {}
-        for model_name in self.models.keys():
+    def update_confidence_threshold(self, threshold: float):
+        """Güven eşiği güncelle"""
+        # Config manager üzerinden güncelle
+        for model_name in self.models:
             model_config = self.config_manager.get_model_config(model_name)
             if model_config:
-                for class_id, class_config in model_config.classes.items():
-                    all_classes[class_id] = class_config.display_name
-        return all_classes
+                model_config.confidence_threshold = threshold
     
     def reset_statistics(self):
         """İstatistikleri sıfırla"""
@@ -690,225 +862,4 @@ class MultiModelYOLODetector:
         self.total_inference_time = 0.0
         self.start_time = time.time()
         for model_name in self.model_stats:
-            self.model_stats[model_name] = {
-                'frames': 0,
-                'total_time': 0.0,
-                'last_detection_count': 0
-            }
-    
-    
-    def _get_color_for_detection(self, detection: Detection) -> Tuple[int, int, int]:
-        """Detection için renk döndür"""
-        # Basit renk şeması
-        if detection.model_type == ModelType.GENERAL:
-            # Genel model için mavi tonları
-            base_color = 200
-            variation = (detection.class_id * 30) % 55
-            return (base_color + variation, variation, variation)
-        else:  # FARM
-            # Farm model için yeşil tonları
-            base_color = 200
-            variation = (detection.class_id * 30) % 55
-            return (variation, base_color + variation, variation)
-    
-    def _generate_colors(self, num_colors: int) -> List[Tuple[int, int, int]]:
-        """Genel model için renk paleti oluştur"""
-        colors = []
-        for i in range(num_colors):
-            hue = int(360 * i / num_colors)
-            # HSV'den BGR'ye dönüştür
-            hsv = np.uint8([[[hue, 255, 255]]])
-            bgr = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)[0][0]
-            colors.append(tuple(map(int, bgr)))
-        return colors
-    
-    def _generate_farm_colors(self) -> List[Tuple[int, int, int]]:
-        """Farm model için özel renk paleti"""
-        # Tarım teması renkleri
-        farm_colors = [
-            (0, 255, 0),     # Yeşil - sağlıklı
-            (0, 165, 255),   # Turuncu - mineral eksikliği
-            (0, 0, 255),     # Kırmızı - hastalık
-            (0, 255, 255),   # Sarı - zararlı
-            (255, 0, 255),   # Magenta - olgunluk
-            (255, 255, 0),   # Cyan - diğer
-            (128, 0, 128),   # Mor
-            (255, 165, 0),   # Mavi
-            (0, 128, 255),   # Açık kırmızı
-            (128, 255, 0),   # Açık yeşil
-        ]
-        return farm_colors
-    
-    def _draw_model_info(self, frame: np.ndarray, 
-                        detection_result: MultiModelDetectionResult):
-        """Frame üzerine model bilgilerini çiz"""
-        y_offset = 30
-        
-        # General model bilgileri
-        if self.enable_general:
-            general_count = len(detection_result.general_detections)
-            general_time = detection_result.processing_times.get('general', 0)
-            text = f"General: {general_count} detections ({general_time*1000:.1f}ms)"
-            cv2.putText(frame, text, (10, y_offset), cv2.FONT_HERSHEY_SIMPLEX, 
-                       0.6, (255, 255, 255), 2)
-            y_offset += 25
-        
-        # Farm model bilgileri
-        if self.enable_farm:
-            farm_count = len(detection_result.farm_detections)
-            farm_time = detection_result.processing_times.get('farm', 0)
-            text = f"Farm: {farm_count} detections ({farm_time*1000:.1f}ms)"
-            cv2.putText(frame, text, (10, y_offset), cv2.FONT_HERSHEY_SIMPLEX,
-                       0.6, (0, 255, 255), 2)
-            y_offset += 25
-        
-        # Total bilgi
-        total_time = detection_result.processing_times.get('total', 0)
-        fps = 1.0 / total_time if total_time > 0 else 0
-        text = f"Total: {len(detection_result.all_detections)} ({total_time*1000:.1f}ms | {fps:.1f} FPS)"
-        cv2.putText(frame, text, (10, y_offset), cv2.FONT_HERSHEY_SIMPLEX,
-                   0.6, (0, 255, 0), 2)
-    
-    def get_statistics(self) -> Dict:
-        """Multi-model performance istatistiklerini döndür"""
-        current_time = time.time()
-        elapsed_time = current_time - self.start_time
-        
-        stats = {
-            "overall": {
-                "frames_processed": self.frame_count,
-                "fps": self.frame_count / elapsed_time if elapsed_time > 0 else 0,
-                "avg_total_inference_time": self.total_inference_time / self.frame_count if self.frame_count > 0 else 0,
-                "total_time": elapsed_time,
-                "device": self.device
-            },
-            "models": {}
-        }
-        
-        # Model bazlı istatistikler
-        if self.enable_general and self.model_stats['general']['frames'] > 0:
-            general_stats = self.model_stats['general']
-            stats["models"]["general"] = {
-                "enabled": True,
-                "frames_processed": general_stats['frames'],
-                "avg_inference_time": general_stats['total_time'] / general_stats['frames'],
-                "total_inference_time": general_stats['total_time'],
-                "model_path": self.general_model_path,
-                "class_count": len(self.general_class_names)
-            }
-        
-        if self.enable_farm and self.model_stats['farm']['frames'] > 0:
-            farm_stats = self.model_stats['farm']
-            stats["models"]["farm"] = {
-                "enabled": True,
-                "frames_processed": farm_stats['frames'],
-                "avg_inference_time": farm_stats['total_time'] / farm_stats['frames'],
-                "total_inference_time": farm_stats['total_time'],
-                "model_path": self.farm_model_path,
-                "class_count": len(self.farm_class_names)
-            }
-        
-        return stats
-    
-    def get_model_info(self) -> Dict:
-        """Model bilgilerini döndür"""
-        info = {}
-        
-        # General model bilgileri
-        if 'general' in self.models:
-            info['general'] = {
-                "enabled": self.enable_general,
-                "path": self.general_model_path,
-                "loaded": True,
-                "class_count": len(self.general_class_names) if self.general_class_names else 0
-            }
-        else:
-            info['general'] = {
-                "enabled": self.enable_general,
-                "path": self.general_model_path,
-                "loaded": False,
-                "class_count": 0
-            }
-        
-        # Farm model bilgileri
-        if 'farm' in self.models:
-            info['farm'] = {
-                "enabled": self.enable_farm,
-                "path": self.farm_model_path,
-                "loaded": True,
-                "class_count": len(self.farm_class_names) if self.farm_class_names else 0
-            }
-        else:
-            info['farm'] = {
-                "enabled": self.enable_farm,
-                "path": self.farm_model_path,
-                "loaded": False,
-                "class_count": 0
-            }
-        
-        return info
-    
-    def set_model_enabled(self, model_type: str, enabled: bool):
-        """Model'i aktif/pasif yap"""
-        if model_type == "general":
-            self.enable_general = enabled
-            logger.info(f"General model {'aktif' if enabled else 'pasif'}")
-        elif model_type == "farm":
-            self.enable_farm = enabled
-            logger.info(f"Farm model {'aktif' if enabled else 'pasif'}")
-        else:
-            logger.error(f"Bilinmeyen model tipi: {model_type}")
-    
-    def update_confidence_threshold(self, model_name: str, threshold: float):
-        """Güven eşiğini güncelle"""
-        if 0.0 <= threshold <= 1.0:
-            if hasattr(self, 'config_manager') and self.config_manager:
-                self.config_manager.set_confidence_threshold(model_name, threshold)
-            logger.info(f"{model_name} model güven eşiği güncellendi: {threshold}")
-        else:
-            raise ValueError("Güven eşiği 0.0 ile 1.0 arasında olmalıdır")
-    
-    def get_detections_by_model(self, detection_result: MultiModelDetectionResult, 
-                               model_type: ModelType) -> List[Detection]:
-        """Belirli model tipinin detection'larını döndür"""
-        if model_type == ModelType.GENERAL:
-            return detection_result.general_detections
-        elif model_type == ModelType.FARM:
-            return detection_result.farm_detections
-        else:
-            return []
-    
-    def get_detection_summary(self, detection_result: MultiModelDetectionResult) -> Dict:
-        """Multi-model tespit özetini döndür"""
-        summary = {
-            "total_detections": len(detection_result.all_detections),
-            "general_detections": len(detection_result.general_detections),
-            "farm_detections": len(detection_result.farm_detections),
-            "processing_times": detection_result.processing_times,
-            "classes_detected": {}
-        }
-        
-        # Model bazlı sınıf sayıları
-        for detection in detection_result.all_detections:
-            model_key = detection.model_type.value
-            class_name = detection.class_name
-            
-            if model_key not in summary["classes_detected"]:
-                summary["classes_detected"][model_key] = {}
-            
-            if class_name not in summary["classes_detected"][model_key]:
-                summary["classes_detected"][model_key][class_name] = 0
-            
-            summary["classes_detected"][model_key][class_name] += 1
-        
-        return summary
-    
-    def reset_statistics(self):
-        """İstatistikleri sıfırla"""
-        self.frame_count = 0
-        self.total_inference_time = 0.0
-        self.start_time = time.time()
-        self.model_stats = {
-            'general': {'frames': 0, 'total_time': 0.0},
-            'farm': {'frames': 0, 'total_time': 0.0}
-        }
+            self.model_stats[model_name] = {'frames': 0, 'total_time': 0.0, 'last_detection_count': 0}
